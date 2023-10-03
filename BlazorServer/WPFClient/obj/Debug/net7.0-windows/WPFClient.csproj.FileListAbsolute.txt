@@ -39,3 +39,5 @@ C:\Users\Mano\source\repos\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages
 C:\Users\Mano\source\repos\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages\StartPage.baml
 C:\Users\Mano\source\repos\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages\MainMenu.g.cs
 C:\Users\Mano\source\repos\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages\MainMenu.baml
+C:\Users\Mano\source\repos\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages\PreparationPage.g.cs
+C:\Users\Mano\source\repos\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages\PreparationPage.baml

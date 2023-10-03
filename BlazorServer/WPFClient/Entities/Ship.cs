@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace WPFClient.Entities
 {
-    class Ship
+    public class Ship
     {
+        string username = string.Empty;
+        Position position;
+        int shipLength = 0;
+
+        public Ship(string username)
+        { 
+
+        }
     }
 }

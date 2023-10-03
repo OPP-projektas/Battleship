@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 C:\Users\Mano\source\repos\BlazorServer\WPFClient\App.xaml
-3-1680280718
+4-1768752798
 
-18-117794515
+28-965058582
 2132029397681
-MainWindow.xaml;Pages\MainMenu.xaml;Pages\StartPage.xaml;
+MainWindow.xaml;Pages\MainMenu.xaml;Pages\PreparationPage.xaml;Pages\StartPage.xaml;
 
 False
 

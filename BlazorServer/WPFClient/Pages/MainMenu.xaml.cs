@@ -140,13 +140,13 @@ namespace WPFClient.Pages
 
         private void startGame_Click(object sender, RoutedEventArgs e)
         {
-            Uri gamePageUri = new Uri("../Pages/StartPage.xaml", UriKind.Relative);
+            Uri preparationPageUri = new Uri("../Pages/PreparationPage.xaml", UriKind.Relative);
 
             MainWindow parent = Window.GetWindow(this) as MainWindow;
 
             if(parent != null)
             {
-                parent.MainFrame.Navigate(gamePageUri);
+                parent.MainFrame.Navigate(preparationPageUri);
             }
         }
     }

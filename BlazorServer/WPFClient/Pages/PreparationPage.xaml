@@ -1,0 +1,117 @@
+﻿<Page x:Class="WPFClient.Pages.PreparationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFClient.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PreparationPage">
+
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="50">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height=".6*"/>
+            <RowDefinition Height=".3*"/>
+        </Grid.RowDefinitions>
+
+        <Label HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black">Your Board Blet</Label>
+
+        <Grid Grid.Row="1">
+            <!-- Define the game board grid -->
+            <Grid Name="GameBoard" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="DarkGreen">
+                <Grid.RowDefinitions>
+                    <!-- Define rows (adjust the number as needed) -->
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <!-- Add more rows as needed -->
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <!-- Define columns (adjust the number as needed) -->
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <!-- Add more columns as needed -->
+                </Grid.ColumnDefinitions>
+
+                <!-- Create cells for the game board -->
+                <!-- Example cell (you can use buttons, rectangles, or any other UI elements) -->
+                <Button Grid.Row="0" Grid.Column="0" Content="A1" Name="Ally_A1" />
+                <Button Grid.Row="0" Grid.Column="1" Content="A2" Name="Ally_A2" />
+                <Button Grid.Row="0" Grid.Column="2" Content="A3" Name="Ally_A3" />
+                <Button Grid.Row="0" Grid.Column="3" Content="A4" Name="Ally_A4" />
+                <Button Grid.Row="0" Grid.Column="4" Content="A5" Name="Ally_A5" />
+                <Button Grid.Row="0" Grid.Column="5" Content="A6" Name="Ally_A6" />
+                <Button Grid.Row="1" Grid.Column="0" Content="B1" Name="Ally_B1" />
+                <Button Grid.Row="1" Grid.Column="1" Content="B1" Name="Ally_B2" />
+                <Button Grid.Row="1" Grid.Column="2" Content="B1" Name="Ally_B3" />
+                <Button Grid.Row="1" Grid.Column="3" Content="B1" Name="Ally_B4" />
+                <Button Grid.Row="1" Grid.Column="4" Content="B5" Name="Ally_B5" />
+                <Button Grid.Row="1" Grid.Column="5" Content="B6" Name="Ally_B6" />
+                <Button Grid.Row="2" Grid.Column="0" Content="C1" Name="Ally_C1" />
+                <Button Grid.Row="2" Grid.Column="1" Content="C2" Name="Ally_C2" />
+                <Button Grid.Row="2" Grid.Column="2" Content="C3" Name="Ally_C3" />
+                <Button Grid.Row="2" Grid.Column="3" Content="C4" Name="Ally_C4" />
+                <Button Grid.Row="2" Grid.Column="4" Content="C5" Name="Ally_C5" />
+                <Button Grid.Row="2" Grid.Column="5" Content="C6" Name="Ally_C6" />
+                <Button Grid.Row="3" Grid.Column="0" Content="D1" Name="Ally_D1" />
+                <Button Grid.Row="3" Grid.Column="1" Content="D2" Name="Ally_D2" />
+                <Button Grid.Row="3" Grid.Column="2" Content="D3" Name="Ally_D3" />
+                <Button Grid.Row="3" Grid.Column="3" Content="D4" Name="Ally_D4" />
+                <Button Grid.Row="3" Grid.Column="4" Content="D5" Name="Ally_D5" />
+                <Button Grid.Row="3" Grid.Column="5" Content="D6" Name="Ally_D6" />
+                <Button Grid.Row="4" Grid.Column="0" Content="E1" Name="Ally_E1" />
+                <Button Grid.Row="4" Grid.Column="1" Content="E2" Name="Ally_E2" />
+                <Button Grid.Row="4" Grid.Column="2" Content="E3" Name="Ally_E3" />
+                <Button Grid.Row="4" Grid.Column="3" Content="E4" Name="Ally_E4" />
+                <Button Grid.Row="4" Grid.Column="4" Content="E5" Name="Ally_E5" />
+                <Button Grid.Row="4" Grid.Column="5" Content="E6" Name="Ally_E6" />
+                <Button Grid.Row="5" Grid.Column="0" Content="F1" Name="Ally_F1" />
+                <Button Grid.Row="5" Grid.Column="1" Content="F2" Name="Ally_F2" />
+                <Button Grid.Row="5" Grid.Column="2" Content="F3" Name="Ally_F3" />
+                <Button Grid.Row="5" Grid.Column="3" Content="F4" Name="Ally_F4" />
+                <Button Grid.Row="5" Grid.Column="4" Content="F5" Name="Ally_F5" />
+                <Button Grid.Row="5" Grid.Column="5" Content="F6" Name="Ally_F6" />
+                <!-- Add more cells for the entire game board -->
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".25*" />
+                <RowDefinition Height=".5*" />
+                <RowDefinition Height=".25*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Red" Grid.Row="0" Grid.ColumnSpan="4">Place your boats bot</Label>
+            
+            <Button Grid.Row="1" x:Name="btnCarrier" Click="btnCarrier_Click" Content="Carrier" Grid.Column="0"></Button>
+            <Button Grid.Row="1" x:Name="btnSubmarine" Click="btnSubmarine_Click" Content="Submarine" Grid.Column="1"></Button>
+            <Button Grid.Row="1" x:Name="btnBattleship" Click="btnBattleship_Click" Content="Battleship" Grid.Column="2"></Button>
+            <Button Grid.Row="1" x:Name="btnBoat" Click="btnBoat_Click" Content="Boat" Grid.Column="3"></Button>
+
+        </Grid>
+
+        <ScrollViewer Grid.Row="2" Grid.ColumnSpan="3" Margin="3,10,3,5" VerticalScrollBarVisibility="Auto">
+            <ListBox x:Name="messages" HorizontalAlignment="Stretch" MinHeight="150" Background="DimGray" Foreground="White" Padding="20 10" BorderThickness="0"/>
+        </ScrollViewer>
+
+    </Grid>
+</Page>

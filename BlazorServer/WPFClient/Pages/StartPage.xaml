@@ -17,7 +17,8 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height=".6*"/>
+            <RowDefinition Height=".3*"/>
         </Grid.RowDefinitions>
 
         <Label HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black">Your Board Blet</Label>
@@ -154,5 +155,10 @@
                 <!-- Add more cells for the entire game board -->
             </Grid>
         </Grid>
+
+        <ScrollViewer Grid.Row="2" Grid.ColumnSpan="3" Margin="3,10,3,5" VerticalScrollBarVisibility="Auto">
+            <ListBox x:Name="messages" HorizontalAlignment="Stretch" Padding="20 10" BorderThickness="0"/>
+        </ScrollViewer>
+
     </Grid>
 </Page>
