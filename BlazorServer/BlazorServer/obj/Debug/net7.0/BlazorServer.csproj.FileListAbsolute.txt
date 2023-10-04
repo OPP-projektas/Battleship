@@ -84,3 +84,46 @@ C:\Users\test\Documents\GitHub\Battleship\BlazorServer\BlazorServer\obj\Debug\ne
 C:\Users\test\Documents\GitHub\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.pdb
 C:\Users\test\Documents\GitHub\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.genruntimeconfig.cache
 C:\Users\test\Documents\GitHub\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\ref\BlazorServer.dll
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\appsettings.json
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\BlazorServer.staticwebassets.runtime.json
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\BlazorServer.exe
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\BlazorServer.deps.json
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\BlazorServer.runtimeconfig.json
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\BlazorServer.dll
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\BlazorServer.pdb
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.AspNetCore.Connections.Abstractions.dll
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.AspNetCore.Http.Connections.Client.dll
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.AspNetCore.Http.Connections.Common.dll
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.AspNetCore.SignalR.Client.dll
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.AspNetCore.SignalR.Client.Core.dll
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.AspNetCore.SignalR.Common.dll
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.Extensions.Features.dll
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.csproj.AssemblyReference.cache
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.AssemblyInfoInputs.cache
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.AssemblyInfo.cs
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.csproj.CoreCompileInputs.cache
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.RazorAssemblyInfo.cache
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.RazorAssemblyInfo.cs
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\staticwebassets\msbuild.BlazorServer.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\staticwebassets\msbuild.build.BlazorServer.props
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.BlazorServer.props
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.BlazorServer.props
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\scopedcss\bundle\BlazorServer.styles.css
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\scopedcss\projectbundle\BlazorServer.bundle.scp.css
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.csproj.CopyComplete
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.dll
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\refint\BlazorServer.dll
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.pdb
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.genruntimeconfig.cache
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\ref\BlazorServer.dll

@@ -8,7 +8,6 @@ namespace WPFClient.Entities.Facotries
 {
     public abstract class ShipFactory
     {
-
         public abstract Ship CreateShip(string username);
     }
 }

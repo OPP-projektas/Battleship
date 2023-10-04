@@ -7,7 +7,20 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PreparationPage">
-
+    
+    <Page.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="LightGray" />
+            <!-- Set your default background color here -->
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Yellow" />
+                    <!-- Set the background color on mouse over -->
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="50">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -20,7 +33,7 @@
             <RowDefinition Height=".3*"/>
         </Grid.RowDefinitions>
 
-        <Label HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black">Your Board Blet</Label>
+        <Label HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black">Your Board</Label>
 
         <Grid Grid.Row="1">
             <!-- Define the game board grid -->
@@ -48,42 +61,42 @@
 
                 <!-- Create cells for the game board -->
                 <!-- Example cell (you can use buttons, rectangles, or any other UI elements) -->
-                <Button Grid.Row="0" Grid.Column="0" Content="A1" Name="Ally_A1" />
-                <Button Grid.Row="0" Grid.Column="1" Content="A2" Name="Ally_A2" />
-                <Button Grid.Row="0" Grid.Column="2" Content="A3" Name="Ally_A3" />
-                <Button Grid.Row="0" Grid.Column="3" Content="A4" Name="Ally_A4" />
-                <Button Grid.Row="0" Grid.Column="4" Content="A5" Name="Ally_A5" />
-                <Button Grid.Row="0" Grid.Column="5" Content="A6" Name="Ally_A6" />
-                <Button Grid.Row="1" Grid.Column="0" Content="B1" Name="Ally_B1" />
-                <Button Grid.Row="1" Grid.Column="1" Content="B1" Name="Ally_B2" />
-                <Button Grid.Row="1" Grid.Column="2" Content="B1" Name="Ally_B3" />
-                <Button Grid.Row="1" Grid.Column="3" Content="B1" Name="Ally_B4" />
-                <Button Grid.Row="1" Grid.Column="4" Content="B5" Name="Ally_B5" />
-                <Button Grid.Row="1" Grid.Column="5" Content="B6" Name="Ally_B6" />
-                <Button Grid.Row="2" Grid.Column="0" Content="C1" Name="Ally_C1" />
-                <Button Grid.Row="2" Grid.Column="1" Content="C2" Name="Ally_C2" />
-                <Button Grid.Row="2" Grid.Column="2" Content="C3" Name="Ally_C3" />
-                <Button Grid.Row="2" Grid.Column="3" Content="C4" Name="Ally_C4" />
-                <Button Grid.Row="2" Grid.Column="4" Content="C5" Name="Ally_C5" />
-                <Button Grid.Row="2" Grid.Column="5" Content="C6" Name="Ally_C6" />
-                <Button Grid.Row="3" Grid.Column="0" Content="D1" Name="Ally_D1" />
-                <Button Grid.Row="3" Grid.Column="1" Content="D2" Name="Ally_D2" />
-                <Button Grid.Row="3" Grid.Column="2" Content="D3" Name="Ally_D3" />
-                <Button Grid.Row="3" Grid.Column="3" Content="D4" Name="Ally_D4" />
-                <Button Grid.Row="3" Grid.Column="4" Content="D5" Name="Ally_D5" />
-                <Button Grid.Row="3" Grid.Column="5" Content="D6" Name="Ally_D6" />
-                <Button Grid.Row="4" Grid.Column="0" Content="E1" Name="Ally_E1" />
-                <Button Grid.Row="4" Grid.Column="1" Content="E2" Name="Ally_E2" />
-                <Button Grid.Row="4" Grid.Column="2" Content="E3" Name="Ally_E3" />
-                <Button Grid.Row="4" Grid.Column="3" Content="E4" Name="Ally_E4" />
-                <Button Grid.Row="4" Grid.Column="4" Content="E5" Name="Ally_E5" />
-                <Button Grid.Row="4" Grid.Column="5" Content="E6" Name="Ally_E6" />
-                <Button Grid.Row="5" Grid.Column="0" Content="F1" Name="Ally_F1" />
-                <Button Grid.Row="5" Grid.Column="1" Content="F2" Name="Ally_F2" />
-                <Button Grid.Row="5" Grid.Column="2" Content="F3" Name="Ally_F3" />
-                <Button Grid.Row="5" Grid.Column="3" Content="F4" Name="Ally_F4" />
-                <Button Grid.Row="5" Grid.Column="4" Content="F5" Name="Ally_F5" />
-                <Button Grid.Row="5" Grid.Column="5" Content="F6" Name="Ally_F6" />
+                <Button Grid.Row="0" Grid.Column="0" Content="A1" Name="A11" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="0" Grid.Column="1" Content="A2" Name="A12" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="0" Grid.Column="2" Content="A3" Name="A13" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="0" Grid.Column="3" Content="A4" Name="A14" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="0" Grid.Column="4" Content="A5" Name="A15" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="0" Grid.Column="5" Content="A6" Name="A16" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="1" Grid.Column="0" Content="B1" Name="B21" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="1" Grid.Column="1" Content="B1" Name="B22" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="1" Grid.Column="2" Content="B1" Name="B23" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="1" Grid.Column="3" Content="B1" Name="B24" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="1" Grid.Column="4" Content="B5" Name="B25" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="1" Grid.Column="5" Content="B6" Name="B26" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="2" Grid.Column="0" Content="C1" Name="C31" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="2" Grid.Column="1" Content="C2" Name="C32" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="2" Grid.Column="2" Content="C3" Name="C33" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="2" Grid.Column="3" Content="C4" Name="C34" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="2" Grid.Column="4" Content="C5" Name="C35" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="2" Grid.Column="5" Content="C6" Name="C36" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="3" Grid.Column="0" Content="D1" Name="D41" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="3" Grid.Column="1" Content="D2" Name="D42" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="3" Grid.Column="2" Content="D3" Name="D43" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="3" Grid.Column="3" Content="D4" Name="D44" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="3" Grid.Column="4" Content="D5" Name="D45" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="3" Grid.Column="5" Content="D6" Name="D46" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="4" Grid.Column="0" Content="E1" Name="E51" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="4" Grid.Column="1" Content="E2" Name="E52" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="4" Grid.Column="2" Content="E3" Name="E53" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="4" Grid.Column="3" Content="E4" Name="E54" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="4" Grid.Column="4" Content="E5" Name="E55" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="4" Grid.Column="5" Content="E6" Name="E56" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="5" Grid.Column="0" Content="F1" Name="F61" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="5" Grid.Column="1" Content="F2" Name="F62" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="5" Grid.Column="2" Content="F3" Name="F63" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="5" Grid.Column="3" Content="F4" Name="F64" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="5" Grid.Column="4" Content="F5" Name="F65" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="5" Grid.Column="5" Content="F6" Name="F66" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
                 <!-- Add more cells for the entire game board -->
             </Grid>
         </Grid>
@@ -100,14 +113,14 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Label VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Red" Grid.Row="0" Grid.ColumnSpan="4">Place your boats bot</Label>
+            <Label VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Red" Grid.Row="0" Grid.ColumnSpan="4">Place your boats</Label>
             
             <Button Grid.Row="1" x:Name="btnCarrier" Click="btnCarrier_Click" Content="Carrier" Grid.Column="0"></Button>
             <Button Grid.Row="1" x:Name="btnSubmarine" Click="btnSubmarine_Click" Content="Submarine" Grid.Column="1"></Button>
             <Button Grid.Row="1" x:Name="btnBattleship" Click="btnBattleship_Click" Content="Battleship" Grid.Column="2"></Button>
             <Button Grid.Row="1" x:Name="btnBoat" Click="btnBoat_Click" Content="Boat" Grid.Column="3"></Button>
 
-            <CheckBox x:Name="horizontalCheckBox" Grid.Row="2" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <CheckBox x:Name="horizontalCheckBox" Grid.Row="2" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" Click="horizontalCheckBox_Click">
             Place Horizontal
             </CheckBox>
         </Grid>

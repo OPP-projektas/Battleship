@@ -8,12 +8,12 @@ namespace WPFClient.Entities.AbstractFactory.VerticalFactory
 {
     public class VerticalBattleship : Ship
     {
-        public VerticalBattleship(string username) : base(username)
+        public VerticalBattleship(string username ) : base(username)
         {
             Logger logger = Logger.GetInstance();
             logger.Log($"Class = {GetType().Name}, method = GetShip");
 
-            // Initialize HorizontalCarrier-specific properties or logic if needed
+            Length = 2;
         }
     }
 }

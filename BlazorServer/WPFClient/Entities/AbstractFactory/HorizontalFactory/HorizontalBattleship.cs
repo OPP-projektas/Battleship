@@ -13,7 +13,8 @@ namespace WPFClient.Entities.AbstractFactory.VerticalFactory
             Logger logger = Logger.GetInstance();
             logger.Log($"Class = {GetType().Name}, method = GetShip");
 
-            // Initialize HorizontalCarrier-specific properties or logic if needed
+            Length = 2;
+
         }
     }
 }

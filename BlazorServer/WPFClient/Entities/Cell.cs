@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace WPFClient.Entities
 {
-    class Cell
+    public class Cell
     {
+        public bool isOccupied = false;
     }
 }

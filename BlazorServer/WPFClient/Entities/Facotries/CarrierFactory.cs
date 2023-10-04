@@ -9,6 +9,7 @@ namespace WPFClient.Entities
         {        
             Logger logger = Logger.GetInstance();
             logger.Log($"Class = {GetType().Name}, method = GetShip");
+
             return new Carrier(username);
           
         }

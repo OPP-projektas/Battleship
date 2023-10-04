@@ -21,8 +21,8 @@
             <RowDefinition Height=".3*"/>
         </Grid.RowDefinitions>
 
-        <Label HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black">Your Board Blet</Label>
-        <Label Grid.Column="2" FontWeight="Bold" HorizontalAlignment="Center" Foreground="Black">De Enemy</Label>
+        <Label HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black">Your Board</Label>
+        <Label Grid.Column="2" FontWeight="Bold" HorizontalAlignment="Center" Foreground="Black">The Enemy Board</Label>
         
         <Grid Grid.Row="1">
             <!-- Define the game board grid -->

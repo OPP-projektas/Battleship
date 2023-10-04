@@ -10,6 +10,7 @@ namespace WPFClient.Entities.ShipTypes
     {
         public Battleship(string username) : base(username)
         {
+            Length = 2;
         }
     }
 }

@@ -17,16 +17,16 @@ namespace WPFClient.Entities.AbstractFactory
         public Ship CreateBattleship(string username)
         {
             return new HorizontalBattleship(username);
-        }
+    }
 
         public Ship CreateBoat(string username)
         {
             return new HorizontalBoat(username);
-        }
+}
 
         public Ship CreateSubmarine(string username)
         {
             return new HorizontalSubmarine(username);
-        }
+}
     }
 }

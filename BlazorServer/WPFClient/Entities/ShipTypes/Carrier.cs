@@ -10,6 +10,7 @@ namespace WPFClient.Entities.ShipTypes
     {
         public Carrier(string username) : base(username)
         {
+            Length = 4;
         }
     }
 }

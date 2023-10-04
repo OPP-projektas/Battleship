@@ -10,6 +10,7 @@ namespace WPFClient.Entities.ShipTypes
     {
         public Boat(string username) : base(username)
         {
+            Length = 1;
         }
     }
 }
