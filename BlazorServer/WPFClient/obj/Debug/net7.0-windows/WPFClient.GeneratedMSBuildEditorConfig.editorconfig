@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WPFClient
-build_property.ProjectDir = C:\Users\Mano\source\repos\BlazorServer\WPFClient\
+build_property.ProjectDir = C:\Users\test\Documents\GitHub\Battleship\BlazorServer\WPFClient\
