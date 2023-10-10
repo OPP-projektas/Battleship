@@ -9,24 +9,20 @@ namespace WPFClient.Entities.AbstractFactory
 {
     public class VerticalShipFactory : IShipFactory
     {
-        public Ship CreateCarrier(string username)
+        public Ship CreateShip(IShipFactory.ShipType shipType, string username)
         {
-            return new VerticalCarrier(username);
-        }
-
-        public Ship CreateBattleship(string username)
-        {
-            return new VerticalBattleship(username);
-        }
-
-        public Ship CreateBoat(string username)
-        {
-            return new VerticalBoat(username);
-        }
-
-        public Ship CreateSubmarine(string username)
-        {
-            return new VerticalSubmarine(username);
+            switch (shipType)
+            {
+                case IShipFactory.ShipType.Battleship:
+                    return new VerticalBattleship(username);
+                case IShipFactory.ShipType.Boat:
+                    return new VerticalBoat(username);
+                case IShipFactory.ShipType.Carrier:
+                    return new VerticalCarrier(username);
+                case IShipFactory.ShipType.Submarine:
+                    return new VerticalSubmarine(username);
+                default: return null;
+            }
         }
     }
 }

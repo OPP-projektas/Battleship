@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace WPFClient.Entities.Facotries
 {
-    public abstract class ShipFactory
+    public interface IFactory
     {
-        public abstract Ship CreateShip(string username);
+        
+        void Place();
     }
 }

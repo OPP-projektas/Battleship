@@ -8,9 +8,13 @@ namespace WPFClient.Entities.AbstractFactory
 {
     public interface IShipFactory
     {
-        Ship CreateCarrier(string username);
-        Ship CreateBattleship(string username);
-        Ship CreateBoat(string username);
-        Ship CreateSubmarine(string username);
+        public enum ShipType
+        {
+            Submarine,
+            Carrier,
+            Battleship,
+            Boat
+        }
+        Ship CreateShip(ShipType shipType, string username);
     }
 }

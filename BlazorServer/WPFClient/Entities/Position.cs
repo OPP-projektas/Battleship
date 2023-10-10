@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace WPFClient.Entities
 {
-    class Position
+    public class Position
     {
+        int x;
+        int y;
     }
 }

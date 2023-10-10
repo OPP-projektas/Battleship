@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFClient.Entities;
 
 namespace WPFClient.Pages
 {
@@ -27,6 +28,12 @@ namespace WPFClient.Pages
         public MainMenu()
         {
             InitializeComponent();
+
+            Logger logger = Logger.GetInstance();
+            logger.SetMessageListBox(messages);
+            logger.Log("Started");
+
+
             connection = new HubConnectionBuilder()
                 .WithUrl("https://localhost:7263/chathub")
                 .WithAutomaticReconnect()

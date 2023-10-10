@@ -40,7 +40,7 @@ namespace WPFClient.Pages
         private void btnBattleship_Click(object sender, RoutedEventArgs e)
         {
             UpdateShipFactory();
-            Ship ship = this.shipFactory.CreateBattleship("John");
+            Ship ship = this.shipFactory.CreateShip(IShipFactory.ShipType.Battleship, "John");
             selectedShip = ship;
             //ShipFactory shipFactory = new BattleshipFactory();
             //var factoryShip = shipFactory.CreateShip("My username");
@@ -49,7 +49,7 @@ namespace WPFClient.Pages
         private void btnCarrier_Click(object sender, RoutedEventArgs e)
         {
             UpdateShipFactory();
-            Ship ship = this.shipFactory.CreateCarrier("John");
+            Ship ship = this.shipFactory.CreateShip(IShipFactory.ShipType.Carrier, "John");
             selectedShip = ship;
             //ShipFactory shipFactory = new CarrierFactory();
             //var factoryShip = shipFactory.CreateShip("My username");
@@ -58,7 +58,7 @@ namespace WPFClient.Pages
         private void btnSubmarine_Click(object sender, RoutedEventArgs e)
         {
             UpdateShipFactory();
-            Ship ship = this.shipFactory.CreateSubmarine("John");
+            Ship ship = this.shipFactory.CreateShip(IShipFactory.ShipType.Submarine, "John");
             selectedShip = ship;
             //ShipFactory shipFactory = new SubmarineFactory();
             //var factoryShip = shipFactory.CreateShip("My username");
@@ -67,7 +67,7 @@ namespace WPFClient.Pages
         private void btnBoat_Click(object sender, RoutedEventArgs e)
         {
             UpdateShipFactory();
-            Ship ship = this.shipFactory.CreateBoat("John");
+            Ship ship = this.shipFactory.CreateShip(IShipFactory.ShipType.Boat, "John");
             selectedShip = ship;
             //ShipFactory shipFactory = new BoatFactory();
             //var factoryShip = shipFactory.CreateShip("My username");
@@ -103,7 +103,7 @@ namespace WPFClient.Pages
                         int y = Int32.Parse(cellToMark.Substring(1, 1));
                         int x = Int32.Parse(cellToMark.Substring(2));
                         Button previewCell = FindName(cellToMark) as Button;
-                        board.boardMatrix[x-1, y-1].isOccupied = true;
+                      //  board.boardMatrix[x-1, y-1].isOccupied = true;
                         if (previewCell != null)
                         {
                             previewCell.Background = Brushes.Pink;
@@ -122,10 +122,10 @@ namespace WPFClient.Pages
                 int y = Int32.Parse(cellToMark.Substring(1, 1));
                 int x = Int32.Parse(cellToMark.Substring(2));
 
-                if (board.boardMatrix[x - 1, y - 1].isOccupied)
+               /* if (board.boardMatrix[x - 1, y - 1].isOccupied)
                 {
                     return false;
-                }
+                }*/
             }
             return true;
         }
@@ -225,6 +225,15 @@ namespace WPFClient.Pages
         private void horizontalCheckBox_Click(object sender, RoutedEventArgs e)
         {
             selectedShip = null;
+        }
+
+        private void btnCell_Click(object sender, RoutedEventArgs e)
+        {
+            CellFactory concreteCellFactory = new ConcreteCellFactory();
+
+            var concreteCell = concreteCellFactory.GetCell(CellFactory.CellType.Occupied);
+
+            concreteCell.Place();
         }
     }
 }

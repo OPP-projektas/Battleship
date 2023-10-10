@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Controls;
+using System.Diagnostics;
 
 namespace WPFClient.Entities
 {
@@ -14,9 +15,10 @@ namespace WPFClient.Entities
 
         // Public method to get the singleton instance of the Logger class
         public static Logger GetInstance()
-        {
+        {           
             if (instance == null)
             {
+                Debug.WriteLine(" Logger created");
                 instance = new Logger();
             }
             return instance;

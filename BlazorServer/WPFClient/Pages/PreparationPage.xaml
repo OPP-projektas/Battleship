@@ -35,6 +35,10 @@
 
         <Label HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black">Your Board</Label>
 
+        <ScrollViewer Grid.Row="2" Grid.ColumnSpan="3" Margin="3,10,3,5" VerticalScrollBarVisibility="Auto">
+            <ListBox x:Name="messages" HorizontalAlignment="Stretch" MinHeight="150" Background="DimGray" Foreground="White" Padding="20 10" BorderThickness="0"/>
+        </ScrollViewer>
+
         <Grid Grid.Row="1">
             <!-- Define the game board grid -->
             <Grid Name="GameBoard" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="DarkGreen">
@@ -113,23 +117,23 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
+
             <Label VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Red" Grid.Row="0" Grid.ColumnSpan="4">Place your boats</Label>
-            
+
             <Button Grid.Row="1" x:Name="btnCarrier" Click="btnCarrier_Click" Content="Carrier" Grid.Column="0"></Button>
             <Button Grid.Row="1" x:Name="btnSubmarine" Click="btnSubmarine_Click" Content="Submarine" Grid.Column="1"></Button>
             <Button Grid.Row="1" x:Name="btnBattleship" Click="btnBattleship_Click" Content="Battleship" Grid.Column="2"></Button>
             <Button Grid.Row="1" x:Name="btnBoat" Click="btnBoat_Click" Content="Boat" Grid.Column="3"></Button>
 
-            <CheckBox x:Name="horizontalCheckBox" Grid.Row="2" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" Click="horizontalCheckBox_Click">
-            Place Horizontal
+            <Button Grid.Row="2" Grid.ColumnSpan="2" x:Name="btnCell" Content="Cell" Click="btnCell_Click"></Button>
+
+
+            <CheckBox x:Name="horizontalCheckBox" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="horizontalCheckBox_Click">
+                Place Horizontal
             </CheckBox>
         </Grid>
 
-        <ScrollViewer Grid.Row="2" Grid.ColumnSpan="3" Margin="3,10,3,5" VerticalScrollBarVisibility="Auto">
-            <ListBox x:Name="messages" HorizontalAlignment="Stretch" MinHeight="150" Background="DimGray" Foreground="White" Padding="20 10" BorderThickness="0"/>
-        </ScrollViewer>
 
-        
 
     </Grid>
 </Page>
