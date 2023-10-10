@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFClient.Pages"
+      xmlns:components="clr-namespace:WPFClient.Components"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PreparationPage">
@@ -35,9 +36,8 @@
 
         <Label HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black">Your Board</Label>
 
-        <ScrollViewer Grid.Row="2" Grid.ColumnSpan="3" Margin="3,10,3,5" VerticalScrollBarVisibility="Auto">
-            <ListBox x:Name="messages" HorizontalAlignment="Stretch" MinHeight="150" Background="DimGray" Foreground="White" Padding="20 10" BorderThickness="0"/>
-        </ScrollViewer>
+        <components:Log Grid.Row="2" Grid.ColumnSpan="3" x:Name="loggerMessages"/>
+
 
         <Grid Grid.Row="1">
             <!-- Define the game board grid -->

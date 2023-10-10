@@ -21,11 +21,12 @@ namespace WPFClient.Pages
         private Ship selectedShip;
         private List<string> previewShipCells = new List<string>();
         private Board board = new Board();
+        private Logger logger;
         public PreparationPage()
         {
             InitializeComponent();
-            Logger logger = Logger.GetInstance();
-            logger.SetMessageListBox(messages);
+            logger = Logger.GetInstance();
+            logger.Log("Preparation started");
         }
         private void UpdateShipFactory()
         {
@@ -100,10 +101,12 @@ namespace WPFClient.Pages
                 {
                     foreach (string cellToMark in previewShipCells)
                     {
-                        int y = Int32.Parse(cellToMark.Substring(1, 1));
-                        int x = Int32.Parse(cellToMark.Substring(2));
+                        int y = Int32.Parse(cellToMark.Substring(1, 1))-1;
+                        int x = Int32.Parse(cellToMark.Substring(2))-1;
+
                         Button previewCell = FindName(cellToMark) as Button;
-                      //  board.boardMatrix[x-1, y-1].isOccupied = true;
+                        Position curPosition = new Position(x, y);
+                        board.ReplaceCell(curPosition);
                         if (previewCell != null)
                         {
                             previewCell.Background = Brushes.Pink;
@@ -119,13 +122,14 @@ namespace WPFClient.Pages
         {
             foreach (string cellToMark in previewShipCells)
             {
-                int y = Int32.Parse(cellToMark.Substring(1, 1));
-                int x = Int32.Parse(cellToMark.Substring(2));
+                int y = Int32.Parse(cellToMark.Substring(1, 1))-1;
+                int x = Int32.Parse(cellToMark.Substring(2))-1;
 
-               /* if (board.boardMatrix[x - 1, y - 1].isOccupied)
+                Position curPosition = new Position(x, y);
+                if (board.GetCellByPosition(curPosition).GetType() == new OccupiedCell().GetType())
                 {
                     return false;
-                }*/
+                }
             }
             return true;
         }
@@ -196,13 +200,25 @@ namespace WPFClient.Pages
                 string cellName = cellButton.Name;
 
                 previewShipCells = CalculateCellsToMark(selectedShip, cellName);
-
+                bool paint = true;
                 foreach (string cellToMark in previewShipCells)
                 {
                     Button previewCell = FindName(cellToMark) as Button;
-                    if (previewCell != null && previewCell.Background != Brushes.Pink)
+                    if (previewCell == null || previewCell.Background == Brushes.Pink)
                     {
-                        previewCell.Background = Brushes.Yellow; // You can change the background color or any other visual indicator
+                        paint = false;
+                        break;
+                    }
+                }
+                if (paint)
+                {
+                    foreach (string cellToMark in previewShipCells)
+                    {
+                        Button previewCell = FindName(cellToMark) as Button;
+                        if (previewCell != null && previewCell.Background != Brushes.Pink)
+                        {
+                            previewCell.Background = Brushes.Yellow;
+                        }
                     }
                 }
             }

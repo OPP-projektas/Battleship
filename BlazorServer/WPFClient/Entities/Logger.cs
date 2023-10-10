@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Controls;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace WPFClient.Entities
 {
@@ -8,6 +9,7 @@ namespace WPFClient.Entities
     {
         private static Logger instance;
         private ListBox messageListBox;
+        private List<string> logEntries = new List<string>();
 
         private Logger()
         {
@@ -28,18 +30,21 @@ namespace WPFClient.Entities
         public void SetMessageListBox(ListBox listBox)
         {
             messageListBox = listBox;
+            foreach (string entry in logEntries)
+            {
+                messageListBox.Items.Add(entry);
+            }
         }
 
         // Log a message and add it to the ListBox
         public void Log(string message)
         {
-            // Implement your logging logic here
-            Console.WriteLine($"Log: {message}");
 
             // Check if the ListBox is set, then add the message to it
             if (messageListBox != null)
             {
                 messageListBox.Items.Add(message);
+                logEntries.Add(message);
                 messageListBox.ScrollIntoView(messageListBox.Items[messageListBox.Items.Count - 1]);
             }
         }

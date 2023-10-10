@@ -8,7 +8,12 @@ namespace WPFClient.Entities
 {
     public class Position
     {
-        int x;
-        int y;
+        public int _x { get; set; }
+        public int _y { get; set; }
+        public Position(int x, int y)
+        {
+            _x = x;
+            _y = y;
+        }
     }
 }

@@ -30,5 +30,15 @@ namespace WPFClient.Entities
             }
             Debug.WriteLine("board created");
         }
+        public void ReplaceCell(Position position)
+        {
+            CellFactory concreteCellFactory = new ConcreteCellFactory();
+            var concreteCell = concreteCellFactory.GetCell(CellFactory.CellType.Occupied);
+            boardMatrix[position._x, position._y] = concreteCell;
+        }
+        public IFactory GetCellByPosition(Position position)
+        {
+            return boardMatrix[position._x, position._y];
+        }
     }
 }

@@ -127,3 +127,6 @@ C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\obj\Debug
 C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\obj\Debug\net7.0-windows\WPFClient.pdb
 C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\obj\Debug\net7.0-windows\WPFClient.genruntimeconfig.cache
 C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\obj\Debug\net7.0-windows\ref\WPFClient.dll
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Components\Log.g.cs
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Components\Log.baml
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
