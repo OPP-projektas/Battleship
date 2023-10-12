@@ -1,32 +1,56 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using WPFClient.Entities;
 using WPFClient.Entities.AbstractFactory;
 using WPFClient.Entities.Facotries;
+using WPFClient.Entities.Builder;
+using Microsoft.AspNetCore.SignalR.Client;
+using WPFClient.Entities.Observer;
+using WPFClient.Entities.Strategy;
 
 namespace WPFClient.Pages
 {
     public partial class PreparationPage : Page
     {
+        Subject subject = new Subject();
+        Context context = new Context();
+        ConcreteObserver observer = new ConcreteObserver();
+        HubConnection lobbyConnection = SignalRConnectionManager.GetInstance().LobbyConnection;
+        string username = "Jonas";
         IShipFactory shipFactory;
         private Ship selectedShip;
         private List<string> previewShipCells = new List<string>();
         private Board board = new Board();
         private Logger logger;
+        private ConcreteBuilder concreteBuilder = new ConcreteBuilder();
         public PreparationPage()
         {
             InitializeComponent();
             logger = Logger.GetInstance();
             logger.Log("Preparation started");
+
+            var result = Task.Run(async() => await OpenPlayerLobbyConnection());
+            result.Wait();
+
+            subject.Attach(observer);
+        }
+        private async Task OpenPlayerLobbyConnection()
+        {
+
+            try
+            {
+                if (lobbyConnection.State != HubConnectionState.Connected)
+                    await lobbyConnection.StartAsync();              
+                await lobbyConnection.InvokeAsync("AdmitPlayer", username);
+            }
+            catch (Exception ex)
+            {
+            }
         }
         private void UpdateShipFactory()
         {
@@ -41,7 +65,7 @@ namespace WPFClient.Pages
         private void btnBattleship_Click(object sender, RoutedEventArgs e)
         {
             UpdateShipFactory();
-            Ship ship = this.shipFactory.CreateShip(IShipFactory.ShipType.Battleship, "John");
+            Ship ship = this.shipFactory.CreateShip(TypesOfShips.Battleship, username);
             selectedShip = ship;
             //ShipFactory shipFactory = new BattleshipFactory();
             //var factoryShip = shipFactory.CreateShip("My username");
@@ -50,7 +74,7 @@ namespace WPFClient.Pages
         private void btnCarrier_Click(object sender, RoutedEventArgs e)
         {
             UpdateShipFactory();
-            Ship ship = this.shipFactory.CreateShip(IShipFactory.ShipType.Carrier, "John");
+            Ship ship = this.shipFactory.CreateShip(TypesOfShips.Carrier, username);
             selectedShip = ship;
             //ShipFactory shipFactory = new CarrierFactory();
             //var factoryShip = shipFactory.CreateShip("My username");
@@ -59,7 +83,7 @@ namespace WPFClient.Pages
         private void btnSubmarine_Click(object sender, RoutedEventArgs e)
         {
             UpdateShipFactory();
-            Ship ship = this.shipFactory.CreateShip(IShipFactory.ShipType.Submarine, "John");
+            Ship ship = this.shipFactory.CreateShip(TypesOfShips.Submarine, username);
             selectedShip = ship;
             //ShipFactory shipFactory = new SubmarineFactory();
             //var factoryShip = shipFactory.CreateShip("My username");
@@ -68,7 +92,7 @@ namespace WPFClient.Pages
         private void btnBoat_Click(object sender, RoutedEventArgs e)
         {
             UpdateShipFactory();
-            Ship ship = this.shipFactory.CreateShip(IShipFactory.ShipType.Boat, "John");
+            Ship ship = this.shipFactory.CreateShip(TypesOfShips.Boat, username);
             selectedShip = ship;
             //ShipFactory shipFactory = new BoatFactory();
             //var factoryShip = shipFactory.CreateShip("My username");
@@ -81,6 +105,7 @@ namespace WPFClient.Pages
                 Button cellButton = (Button)sender;
                 string cellName = cellButton.Name;
                 PlaceShip(selectedShip, cellName);
+                BuildShip();              
             }
             else
             {
@@ -134,7 +159,27 @@ namespace WPFClient.Pages
             return true;
         }
 
-
+        private void BuildShip()
+        {
+            switch (selectedShip.Length)
+            {
+                case 1:
+                    concreteBuilder.BuildBoat();
+                    break;
+                case 2:
+                    concreteBuilder.BuildBattleship();
+                    break;
+                case 3:
+                    concreteBuilder.BuildSubmarine();
+                    break;
+                case 4:
+                    concreteBuilder.BuildCarrier();
+                    break;
+                default:
+                    concreteBuilder.Reset();
+                    break;
+            }              
+        }
         private string AddLetterToCoordinates(string x)
         {
             switch (x)
@@ -245,11 +290,21 @@ namespace WPFClient.Pages
 
         private void btnCell_Click(object sender, RoutedEventArgs e)
         {
-            CellFactory concreteCellFactory = new ConcreteCellFactory();
+            var parts = concreteBuilder.GetProduct().ListParts();
 
-            var concreteCell = concreteCellFactory.GetCell(CellFactory.CellType.Occupied);
+            context.SetStrategy(new AscendingLength());
+            context.DoStrategicSort(parts);
 
-            concreteCell.Place();
+            context.SetStrategy(new DescedingLength());
+            context.DoStrategicSort(parts);
+
+            context.SetStrategy(new AscendingAmont());
+            context.DoStrategicSort(parts);
+
+            context.SetStrategy(new DescendingAmount());
+            context.DoStrategicSort(parts);
+
+            subject.Ready();
         }
     }
 }

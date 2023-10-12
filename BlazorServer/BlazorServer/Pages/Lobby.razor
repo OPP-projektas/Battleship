@@ -1,0 +1,72 @@
+﻿@page "/lobbyhub"
+@using Microsoft.AspNetCore.SignalR.Client
+@inject NavigationManager NavManager
+@implements IAsyncDisposable
+
+<PageTitle>LobbyHub</PageTitle>
+
+@*<h1>Lobby</h1>
+
+<p role="status">Current count: @currentCount</p>*@
+
+<h1><center>PLAYERS IN LOBBY:</center></h1>
+
+<ul>
+    @foreach (string player in players)
+    {
+        <li>@player</li>
+    }
+</ul>
+
+<h1><center>READY PLAYERS:</center></h1>
+
+<ul>
+    @foreach (string readyPlayer in readyPlayers)
+    {
+        <li>@readyPlayer</li>
+    }
+</ul>
+
+
+
+
+@code {
+    private int currentCount = 0;
+    private List<string> players = new List<string>();
+    private List<string> readyPlayers = new List<string>();
+    private HubConnection? hubConnection;
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(NavManager.ToAbsoluteUri("/lobbyhub"))
+            .WithAutomaticReconnect()
+            .Build();
+
+       hubConnection.On<string>("AddPlayerToLobby", (user) =>
+       {
+           players.Add(user);
+           InvokeAsync(StateHasChanged);
+       });
+
+        hubConnection.On<string>("PlayerReadyMessage", (user) =>
+        {
+            readyPlayers.Add($"{user} is ready!");
+            InvokeAsync(StateHasChanged);
+        });
+
+        hubConnection.On<string, int>("CounterIncrement", (user, value) =>
+        {
+            currentCount += value;
+            InvokeAsync(StateHasChanged);
+        });
+
+        await hubConnection.StartAsync();
+    }
+    public async ValueTask DisposeAsync()
+    {
+        if (hubConnection is not null)
+        {
+            await hubConnection.DisposeAsync();
+        }
+    }
+}

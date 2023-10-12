@@ -41,7 +41,7 @@ namespace WPFClient.Pages
                 .Build();
 
             counterConnection = new HubConnectionBuilder()
-                .WithUrl("https://localhost:7263/counterhub")
+                .WithUrl("https://localhost:7263/lobbyhub")
                 .WithAutomaticReconnect()
                 .Build();
 

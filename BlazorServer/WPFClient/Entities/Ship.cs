@@ -10,8 +10,6 @@ namespace WPFClient.Entities
     {
         public string Username { get; protected set; }
         public int Length { get; protected set; }
-        Position position;
-        int shipLength = 0;
         public Ship(string username)
         {
             Username = username;

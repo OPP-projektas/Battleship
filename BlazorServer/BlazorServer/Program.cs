@@ -32,7 +32,7 @@ app.UseRouting();
 
 app.MapBlazorHub();
 app.MapHub<ChatHub>("/chathub");
-app.MapHub<CounterHub>("/counterhub");
+app.MapHub<LobbyHub>("/lobbyhub");
 
 app.MapFallbackToPage("/_Host");
 
