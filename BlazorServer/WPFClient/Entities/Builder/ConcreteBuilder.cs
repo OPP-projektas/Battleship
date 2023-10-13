@@ -19,28 +19,33 @@ namespace WPFClient.Entities.Builder
         {
             this._product = new Product();
         }
-        public void BuildBattleship()
+        //return builder
+        public ConcreteBuilder BuildBattleship()
         {
             logger.Log($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
             _product.Add(TypesOfShips.Battleship);
+            return (this);
         }
 
-        public void BuildBoat()
+        public ConcreteBuilder BuildBoat()
         {
             logger.Log($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
             _product.Add(TypesOfShips.Boat);
+            return (this);
         }
 
-        public void BuildCarrier()
+        public ConcreteBuilder BuildCarrier()
         {
             logger.Log($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
             _product.Add(TypesOfShips.Carrier);
+            return (this);
         }
 
-        public void BuildSubmarine()
+        public ConcreteBuilder BuildSubmarine()
         {
             logger.Log($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
             _product.Add(TypesOfShips.Submarine);
+            return (this);
         }
         public Product GetProduct()
         {
