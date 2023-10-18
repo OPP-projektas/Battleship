@@ -31,8 +31,10 @@ namespace WPFClient.Entities.Strategy
         {
             var result = _strategy.StrategicSort(input);
             foreach (var keyValuePair in result as Dictionary<TypesOfShips, int>)
-            {          
-                logger.Log($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}, typeof(parameter): {_strategy.GetType()} response: Type: {keyValuePair.Key} Amount: {keyValuePair.Value}");
+            {
+                Message message = new Message();
+                message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}, typeof(parameter): {_strategy.GetType()} response: Type: {keyValuePair.Key} Amount: {keyValuePair.Value}");
+                logger.Log(message);
             }
         }
     }

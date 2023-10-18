@@ -18,7 +18,9 @@ namespace WPFClient.Entities.Observer
         {
             if((subject as Subject).State)
             {
-                logger.Log($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
+                Message message = new Message();
+                message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
+                logger.Log(message);
                 if (lobbyConnection.State != HubConnectionState.Connected)
                 {
                     var result = Task.Run(async () => await OpenPlayerLobbyConnection(lobbyConnection));

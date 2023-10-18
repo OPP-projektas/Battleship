@@ -16,20 +16,26 @@ namespace WPFClient.Entities.Observer
 
         public void Attach(IObserver observer)
         {
-            logger.Log($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
+            Message message = new Message();
+            message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
+            logger.Log(message);
             this._observers.Add(observer);
         }
 
         public void Detach(IObserver observer)
         {
-            logger.Log($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
+            Message message = new Message();
+            message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
+            logger.Log(message);
             this._observers.Remove(observer);
         }
 
         public void Notify()
         {
-            logger.Log($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
-            foreach(var observer in _observers)
+            Message message = new Message();
+            message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
+            logger.Log(message);
+            foreach (var observer in _observers)
             {
                 observer.Update(this);
             }         

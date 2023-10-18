@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,7 +28,9 @@ namespace WPFClient.Components
             InitializeComponent();
             Logger logger = Logger.GetInstance();
             logger.SetMessageListBox(logMessages);
-            logger.Log("Started");
+            Message message = new Message();
+            message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
+            logger.Log(message);
         }
        
     }

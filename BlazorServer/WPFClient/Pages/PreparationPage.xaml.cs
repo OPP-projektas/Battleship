@@ -12,6 +12,7 @@ using WPFClient.Entities.Builder;
 using Microsoft.AspNetCore.SignalR.Client;
 using WPFClient.Entities.Observer;
 using WPFClient.Entities.Strategy;
+using System.Reflection;
 
 namespace WPFClient.Pages
 {
@@ -32,7 +33,9 @@ namespace WPFClient.Pages
         {
             InitializeComponent();
             logger = Logger.GetInstance();
-            logger.Log("Preparation started");
+            Message message = new Message();
+            message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
+            logger.Log(message);
 
             var result = Task.Run(async() => await OpenPlayerLobbyConnection());
             result.Wait();

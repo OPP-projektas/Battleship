@@ -8,9 +8,9 @@ namespace WPFClient.Entities.Builder
 {
     public interface IBuilder
     {
-        void BuildBoat();
-        void BuildBattleship();
-        void BuildSubmarine();
-        void BuildCarrier();
+        IBuilder BuildBoat();
+        IBuilder BuildBattleship();
+        IBuilder BuildSubmarine();
+        IBuilder BuildCarrier();
     }
 }

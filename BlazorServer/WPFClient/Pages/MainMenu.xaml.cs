@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFClient.Entities;
 using WPFClient.Components;
+using System.Reflection;
 
 namespace WPFClient.Pages
 {
@@ -30,9 +31,11 @@ namespace WPFClient.Pages
         {
             InitializeComponent();
 
-            Logger logger = Logger.GetInstance();
-            logger.Log("Main menu started");
 
+            Logger logger = Logger.GetInstance();
+            Message message = new Message();
+            message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
+            logger.Log(message);
 
 
             connection = new HubConnectionBuilder()

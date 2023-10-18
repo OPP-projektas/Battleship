@@ -20,30 +20,38 @@ namespace WPFClient.Entities.Builder
             this._product = new Product();
         }
         //return builder
-        public ConcreteBuilder BuildBattleship()
+        public IBuilder BuildBattleship()
         {
-            logger.Log($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
+            Message message = new Message();
+            message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
+            logger.Log(message);
             _product.Add(TypesOfShips.Battleship);
             return (this);
         }
 
-        public ConcreteBuilder BuildBoat()
+        public IBuilder BuildBoat()
         {
-            logger.Log($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
+            Message message = new Message();
+            message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
+            logger.Log(message);
             _product.Add(TypesOfShips.Boat);
             return (this);
         }
 
-        public ConcreteBuilder BuildCarrier()
+        public IBuilder BuildCarrier()
         {
-            logger.Log($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
+            Message message = new Message();
+            message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
+            logger.Log(message);
             _product.Add(TypesOfShips.Carrier);
             return (this);
         }
 
-        public ConcreteBuilder BuildSubmarine()
+        public IBuilder BuildSubmarine()
         {
-            logger.Log($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
+            Message message = new Message();
+            message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
+            logger.Log(message);
             _product.Add(TypesOfShips.Submarine);
             return (this);
         }
