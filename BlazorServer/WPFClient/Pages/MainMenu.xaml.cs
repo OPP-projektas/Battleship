@@ -13,9 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPFClient.Entities;
 using WPFClient.Components;
 using System.Reflection;
+using WPFClient.Entities.Prototype;
+using WPFClient.Entities;
 
 namespace WPFClient.Pages
 {
@@ -113,7 +114,7 @@ namespace WPFClient.Pages
         {
             try
             {
-                await connection.InvokeAsync("SendMessage", "WPF Client", messageInput.Text);
+                await connection.InvokeAsync("SendMessage", UserInfo.Username, messageInput.Text);
 
             }
             catch (Exception ex)
@@ -140,7 +141,7 @@ namespace WPFClient.Pages
         {
             try
             {
-                await counterConnection.InvokeAsync("AddToTotal", "WPF Client", 1);
+                await counterConnection.InvokeAsync("AddToTotal", UserInfo.Username, 1);
 
             }
             catch (Exception ex)

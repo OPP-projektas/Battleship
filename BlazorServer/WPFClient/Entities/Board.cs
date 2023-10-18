@@ -8,12 +8,11 @@ using WPFClient.Entities.Facotries;
 
 namespace WPFClient.Entities
 {
-    class Board
+    public class Board
     {
         public IFactory[,] boardMatrix = new IFactory[6,6];
         public Board()
         {
-            Debug.WriteLine("board started");
 
             CellFactory concreteCellFactory = new ConcreteCellFactory();
 
@@ -28,7 +27,6 @@ namespace WPFClient.Entities
                     boardMatrix[i, j] = concreteCell;
                 }
             }
-            Debug.WriteLine("board created");
         }
         public void ReplaceCell(Position position)
         {

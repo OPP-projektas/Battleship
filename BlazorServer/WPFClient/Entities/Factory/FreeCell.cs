@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using WPFClient.Entities.Prototype;
 
 namespace WPFClient.Entities.Facotries
 {
@@ -16,5 +17,6 @@ namespace WPFClient.Entities.Facotries
             message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
             logger.Log(message);
         }
+
     }
 }

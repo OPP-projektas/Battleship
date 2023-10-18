@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using WPFClient.Entities.Prototype;
 
 namespace WPFClient.Entities.Builder
 {

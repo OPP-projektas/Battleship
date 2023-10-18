@@ -16,7 +16,7 @@ public partial class MainWindow : Window
     }
     private void MainWindow_Loaded(object sender, RoutedEventArgs e)
     {
-        Uri defaultPageUri = new Uri("./Pages/MainMenu.xaml", UriKind.Relative);
+        Uri defaultPageUri = new Uri("./Pages/Register.xaml", UriKind.Relative);
         MainFrame.Source = defaultPageUri;
         MainFrame.Visibility = Visibility.Visible;
     }

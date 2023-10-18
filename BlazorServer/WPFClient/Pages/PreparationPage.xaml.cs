@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.SignalR.Client;
 using WPFClient.Entities.Observer;
 using WPFClient.Entities.Strategy;
 using System.Reflection;
+using WPFClient.Entities.Prototype;
+using WPFClient.Entities.Singelton;
 
 namespace WPFClient.Pages
 {
@@ -22,7 +24,7 @@ namespace WPFClient.Pages
         Context context = new Context();
         ConcreteObserver observer = new ConcreteObserver();
         HubConnection lobbyConnection = SignalRConnectionManager.GetInstance().LobbyConnection;
-        string username = "Jonas";
+        string username = UserInfo.Username;
         IShipFactory shipFactory;
         private Ship selectedShip;
         private List<string> previewShipCells = new List<string>();
@@ -50,6 +52,19 @@ namespace WPFClient.Pages
                 if (lobbyConnection.State != HubConnectionState.Connected)
                     await lobbyConnection.StartAsync();              
                 await lobbyConnection.InvokeAsync("AdmitPlayer", username);
+                lobbyConnection.On<string>("StartGame", (user) =>
+                {
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        MainWindow parent = Window.GetWindow(this) as MainWindow;
+
+                        if (parent != null)
+                        {
+                            StartPage startPage = new StartPage(board);
+                            parent.MainFrame.Navigate(startPage);
+                        }
+                    });
+                });
             }
             catch (Exception ex)
             {
@@ -301,13 +316,24 @@ namespace WPFClient.Pages
             context.SetStrategy(new DescedingLength());
             context.DoStrategicSort(parts);
 
-            context.SetStrategy(new AscendingAmont());
+            context.SetStrategy(new AscendingAmount());
             context.DoStrategicSort(parts);
 
             context.SetStrategy(new DescendingAmount());
             context.DoStrategicSort(parts);
 
             subject.Ready();
+
+            //-------------------------------------------------------------------------
+
+
+            //MainWindow parent = Window.GetWindow(this) as MainWindow;
+
+            //if (parent != null)
+            //{
+            //    StartPage startPage = new StartPage(board);
+            //    parent.MainFrame.Navigate(startPage);
+            //}
         }
     }
 }

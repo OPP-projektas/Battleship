@@ -26,6 +26,13 @@
         <li>@readyPlayer</li>
     }
 </ul>
+<h1><center>Game Log:</center></h1>
+<ul>
+    @foreach (string gameLogMessage in gameLog)
+    {
+        <li>@gameLogMessage</li>
+    }
+</ul>
 
 
 
@@ -34,6 +41,8 @@
     private int currentCount = 0;
     private List<string> players = new List<string>();
     private List<string> readyPlayers = new List<string>();
+    private Dictionary<string, bool> turnDictionary = new Dictionary<string, bool>();
+    private List<string> gameLog = new List<string>();
     private HubConnection? hubConnection;
     protected override async Task OnInitializedAsync()
     {
@@ -42,16 +51,27 @@
             .WithAutomaticReconnect()
             .Build();
 
-       hubConnection.On<string>("AddPlayerToLobby", (user) =>
-       {
-           players.Add(user);
-           InvokeAsync(StateHasChanged);
-       });
-
-        hubConnection.On<string>("PlayerReadyMessage", (user) =>
+        hubConnection.On<string>("AddPlayerToLobby", (user) =>
         {
-            readyPlayers.Add($"{user} is ready!");
+            players.Add(user);
             InvokeAsync(StateHasChanged);
+        });
+
+        hubConnection.On<string>("PlayerReadyMessage", async (user) =>
+        {
+            if (!readyPlayers.Contains(user))
+            {
+                readyPlayers.Add(user);
+                await InvokeAsync(StateHasChanged);
+            }
+            if (readyPlayers.Count > 1)
+            {
+                turnDictionary.Add(readyPlayers[0], true);
+                turnDictionary.Add(readyPlayers[1], false);
+
+                await StartGame(turnDictionary);
+                await InvokeAsync(StateHasChanged);
+            }
         });
 
         hubConnection.On<string, int>("CounterIncrement", (user, value) =>
@@ -60,7 +80,29 @@
             InvokeAsync(StateHasChanged);
         });
 
+        hubConnection.On<string, string>("Shoot", async (user, coordinates) =>
+        {
+            gameLog.Add($"{user} shoots at {coordinates}");
+            await InvokeAsync(StateHasChanged);
+        });
+
+        hubConnection.On<bool>("ReportBack", async (hit) =>
+        {
+            if(hit)
+                gameLog.Add($"HIT");
+            else
+                gameLog.Add($"MISS");
+            await InvokeAsync(StateHasChanged);
+        });
+
         await hubConnection.StartAsync();
+    }
+    private async Task StartGame(Dictionary<string, bool> turnDictionary)
+    {
+        if (hubConnection is not null)
+        {
+            await hubConnection.SendAsync("StartGame", turnDictionary);
+        }
     }
     public async ValueTask DisposeAsync()
     {

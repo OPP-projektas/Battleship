@@ -12,7 +12,7 @@
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="50">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -22,6 +22,7 @@
         </Grid.RowDefinitions>
 
         <Label HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black">Your Board</Label>
+        <Label Grid.Column="1" x:Name="lblTurn" FontWeight="Bold" HorizontalAlignment="Center">Turn indicator</Label>
         <Label Grid.Column="2" FontWeight="Bold" HorizontalAlignment="Center" Foreground="Black">The Enemy Board</Label>
         
         <Grid Grid.Row="1">
@@ -57,9 +58,9 @@
                 <Button Grid.Row="0" Grid.Column="4" Content="A5" Name="Ally_A5" />
                 <Button Grid.Row="0" Grid.Column="5" Content="A6" Name="Ally_A6" />
                 <Button Grid.Row="1" Grid.Column="0" Content="B1" Name="Ally_B1" />
-                <Button Grid.Row="1" Grid.Column="1" Content="B1" Name="Ally_B2" />
-                <Button Grid.Row="1" Grid.Column="2" Content="B1" Name="Ally_B3" />
-                <Button Grid.Row="1" Grid.Column="3" Content="B1" Name="Ally_B4" />
+                <Button Grid.Row="1" Grid.Column="1" Content="B2" Name="Ally_B2" />
+                <Button Grid.Row="1" Grid.Column="2" Content="B3" Name="Ally_B3" />
+                <Button Grid.Row="1" Grid.Column="3" Content="B4" Name="Ally_B4" />
                 <Button Grid.Row="1" Grid.Column="4" Content="B5" Name="Ally_B5" />
                 <Button Grid.Row="1" Grid.Column="5" Content="B6" Name="Ally_B6" />
                 <Button Grid.Row="2" Grid.Column="0" Content="C1" Name="Ally_C1" />
@@ -116,42 +117,42 @@
                 <!-- Create cells for the game board -->
                 <!-- Example cell (you can use buttons, rectangles, or any other UI elements) -->
 
-                <Button Grid.Row="0" Grid.Column="0" Content="A1" Name="Enemy_A1" />
-                <Button Grid.Row="0" Grid.Column="1" Content="A2" Name="Enemy_A2" />
-                <Button Grid.Row="0" Grid.Column="2" Content="A3" Name="Enemy_A3" />
-                <Button Grid.Row="0" Grid.Column="3" Content="A4" Name="Enemy_A4" />
-                <Button Grid.Row="0" Grid.Column="4" Content="A5" Name="Enemy_A5" />
-                <Button Grid.Row="0" Grid.Column="5" Content="A6" Name="Enemy_A6" />
-                <Button Grid.Row="1" Grid.Column="0" Content="B1" Name="Enemy_B1" />
-                <Button Grid.Row="1" Grid.Column="1" Content="B1" Name="Enemy_B2" />
-                <Button Grid.Row="1" Grid.Column="2" Content="B1" Name="Enemy_B3" />
-                <Button Grid.Row="1" Grid.Column="3" Content="B1" Name="Enemy_B4" />
-                <Button Grid.Row="1" Grid.Column="4" Content="B5" Name="Enemy_B5" />
-                <Button Grid.Row="1" Grid.Column="5" Content="B6" Name="Enemy_B6" />
-                <Button Grid.Row="2" Grid.Column="0" Content="C1" Name="Enemy_C1" />
-                <Button Grid.Row="2" Grid.Column="1" Content="C2" Name="Enemy_C2" />
-                <Button Grid.Row="2" Grid.Column="2" Content="C3" Name="Enemy_C3" />
-                <Button Grid.Row="2" Grid.Column="3" Content="C4" Name="Enemy_C4" />
-                <Button Grid.Row="2" Grid.Column="4" Content="C5" Name="Enemy_C5" />
-                <Button Grid.Row="2" Grid.Column="5" Content="C6" Name="Enemy_C6" />
-                <Button Grid.Row="3" Grid.Column="0" Content="D1" Name="Enemy_D1" />
-                <Button Grid.Row="3" Grid.Column="1" Content="D2" Name="Enemy_D2" />
-                <Button Grid.Row="3" Grid.Column="2" Content="D3" Name="Enemy_D3" />
-                <Button Grid.Row="3" Grid.Column="3" Content="D4" Name="Enemy_D4" />
-                <Button Grid.Row="3" Grid.Column="4" Content="D5" Name="Enemy_D5" />
-                <Button Grid.Row="3" Grid.Column="5" Content="D6" Name="Enemy_D6" />
-                <Button Grid.Row="4" Grid.Column="0" Content="E1" Name="Enemy_E1" />
-                <Button Grid.Row="4" Grid.Column="1" Content="E2" Name="Enemy_E2" />
-                <Button Grid.Row="4" Grid.Column="2" Content="E3" Name="Enemy_E3" />
-                <Button Grid.Row="4" Grid.Column="3" Content="E4" Name="Enemy_E4" />
-                <Button Grid.Row="4" Grid.Column="4" Content="E5" Name="Enemy_E5" />
-                <Button Grid.Row="4" Grid.Column="5" Content="E6" Name="Enemy_E6" />
-                <Button Grid.Row="5" Grid.Column="0" Content="F1" Name="Enemy_F1" />
-                <Button Grid.Row="5" Grid.Column="1" Content="F2" Name="Enemy_F2" />
-                <Button Grid.Row="5" Grid.Column="2" Content="F3" Name="Enemy_F3" />
-                <Button Grid.Row="5" Grid.Column="3" Content="F4" Name="Enemy_F4" />
-                <Button Grid.Row="5" Grid.Column="4" Content="F5" Name="Enemy_F5" />
-                <Button Grid.Row="5" Grid.Column="5" Content="F6" Name="Enemy_F6" />
+                <Button Grid.Row="0" Grid.Column="0" Content="A1" Name="Enemy_A1" Click="Enemy_Cell_Click"/>
+                <Button Grid.Row="0" Grid.Column="1" Content="A2" Name="Enemy_A2" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="0" Grid.Column="2" Content="A3" Name="Enemy_A3" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="0" Grid.Column="3" Content="A4" Name="Enemy_A4" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="0" Grid.Column="4" Content="A5" Name="Enemy_A5" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="0" Grid.Column="5" Content="A6" Name="Enemy_A6" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="1" Grid.Column="0" Content="B1" Name="Enemy_B1" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="1" Grid.Column="1" Content="B2" Name="Enemy_B2" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="1" Grid.Column="2" Content="B3" Name="Enemy_B3" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="1" Grid.Column="3" Content="B4" Name="Enemy_B4" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="1" Grid.Column="4" Content="B5" Name="Enemy_B5" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="1" Grid.Column="5" Content="B6" Name="Enemy_B6" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="2" Grid.Column="0" Content="C1" Name="Enemy_C1" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="2" Grid.Column="1" Content="C2" Name="Enemy_C2" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="2" Grid.Column="2" Content="C3" Name="Enemy_C3" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="2" Grid.Column="3" Content="C4" Name="Enemy_C4" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="2" Grid.Column="4" Content="C5" Name="Enemy_C5" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="2" Grid.Column="5" Content="C6" Name="Enemy_C6" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="3" Grid.Column="0" Content="D1" Name="Enemy_D1" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="3" Grid.Column="1" Content="D2" Name="Enemy_D2" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="3" Grid.Column="2" Content="D3" Name="Enemy_D3" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="3" Grid.Column="3" Content="D4" Name="Enemy_D4" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="3" Grid.Column="4" Content="D5" Name="Enemy_D5" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="3" Grid.Column="5" Content="D6" Name="Enemy_D6" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="4" Grid.Column="0" Content="E1" Name="Enemy_E1" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="4" Grid.Column="1" Content="E2" Name="Enemy_E2" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="4" Grid.Column="2" Content="E3" Name="Enemy_E3" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="4" Grid.Column="3" Content="E4" Name="Enemy_E4" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="4" Grid.Column="4" Content="E5" Name="Enemy_E5" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="4" Grid.Column="5" Content="E6" Name="Enemy_E6" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="5" Grid.Column="0" Content="F1" Name="Enemy_F1" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="5" Grid.Column="1" Content="F2" Name="Enemy_F2" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="5" Grid.Column="2" Content="F3" Name="Enemy_F3" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="5" Grid.Column="3" Content="F4" Name="Enemy_F4" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="5" Grid.Column="4" Content="F5" Name="Enemy_F5" Click="Enemy_Cell_Click" />
+                <Button Grid.Row="5" Grid.Column="5" Content="F6" Name="Enemy_F6" Click="Enemy_Cell_Click" />
                 <!-- Add more cells for the entire game board -->
             </Grid>
         </Grid>

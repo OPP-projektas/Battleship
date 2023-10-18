@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\test\Documents\GitHub\Battleship\BlazorServer\WPFClient\obj\Debug\net7.0-windows\
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\obj\Debug\net7.0-windows\
 WPFClient
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-C:\Users\test\Documents\GitHub\Battleship\BlazorServer\WPFClient\App.xaml
-5-1534226036
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\App.xaml
+6-1448653163
 
-521861591193
-213-328873940
-Components\Log.xaml;MainWindow.xaml;Pages\MainMenu.xaml;Pages\PreparationPage.xaml;Pages\StartPage.xaml;
+54-2056285291
+2132029397681
+Components\Log.xaml;MainWindow.xaml;Pages\MainMenu.xaml;Pages\PreparationPage.xaml;Pages\Register.xaml;Pages\StartPage.xaml;
 
-True
+False
 

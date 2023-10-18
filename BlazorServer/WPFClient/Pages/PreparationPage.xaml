@@ -72,9 +72,9 @@
                 <Button Grid.Row="0" Grid.Column="4" Content="A5" Name="A15" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
                 <Button Grid.Row="0" Grid.Column="5" Content="A6" Name="A16" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
                 <Button Grid.Row="1" Grid.Column="0" Content="B1" Name="B21" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
-                <Button Grid.Row="1" Grid.Column="1" Content="B1" Name="B22" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
-                <Button Grid.Row="1" Grid.Column="2" Content="B1" Name="B23" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
-                <Button Grid.Row="1" Grid.Column="3" Content="B1" Name="B24" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="1" Grid.Column="1" Content="B2" Name="B22" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="1" Grid.Column="2" Content="B3" Name="B23" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
+                <Button Grid.Row="1" Grid.Column="3" Content="B4" Name="B24" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
                 <Button Grid.Row="1" Grid.Column="4" Content="B5" Name="B25" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
                 <Button Grid.Row="1" Grid.Column="5" Content="B6" Name="B26" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>
                 <Button Grid.Row="2" Grid.Column="0" Content="C1" Name="C31" Click="GameCell_Click" MouseEnter="GameCell_MouseEnter" MouseLeave="GameCell_MouseLeave"/>

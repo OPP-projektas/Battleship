@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPFClient.Entities;
+using WPFClient.Entities.Prototype;
 
 namespace WPFClient.Components
 {
@@ -28,6 +28,7 @@ namespace WPFClient.Components
             InitializeComponent();
             Logger logger = Logger.GetInstance();
             logger.SetMessageListBox(logMessages);
+
             Message message = new Message();
             message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
             logger.Log(message);

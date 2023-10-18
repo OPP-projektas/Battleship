@@ -5,6 +5,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using WPFClient.Entities.Prototype;
+using WPFClient.Entities.Singelton;
 
 namespace WPFClient.Entities.Observer
 {
@@ -12,7 +14,7 @@ namespace WPFClient.Entities.Observer
     {
         Logger logger = Logger.GetInstance();
         HubConnection lobbyConnection = SignalRConnectionManager.GetInstance().LobbyConnection;
-        string username = "Jonas";
+        string username = UserInfo.Username;
 
         public void Update(ISubject subject)
         {
