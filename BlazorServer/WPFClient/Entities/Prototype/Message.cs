@@ -9,7 +9,7 @@ namespace WPFClient.Entities.Prototype
 {
     class Message
     {
-        public string Name = UserInfo.Username;
+        public string Name = Player.Username;
         public Content Content = new Content();
         public DateTime Timestamp = DateTime.Now;
 

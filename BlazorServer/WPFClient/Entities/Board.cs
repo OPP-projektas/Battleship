@@ -28,10 +28,16 @@ namespace WPFClient.Entities
                 }
             }
         }
-        public void ReplaceCell(Position position)
+        public void OccupyCell(Position position)
         {
             CellFactory concreteCellFactory = new ConcreteCellFactory();
             var concreteCell = concreteCellFactory.GetCell(CellFactory.CellType.Occupied);
+            boardMatrix[position._x, position._y] = concreteCell;
+        }
+        public void UnoccupyCell(Position position)
+        {
+            CellFactory concreteCellFactory = new ConcreteCellFactory();
+            var concreteCell = concreteCellFactory.GetCell(CellFactory.CellType.Free);
             boardMatrix[position._x, position._y] = concreteCell;
         }
         public IFactory GetCellByPosition(Position position)

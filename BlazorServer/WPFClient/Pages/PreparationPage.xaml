@@ -125,7 +125,9 @@
             <Button Grid.Row="1" x:Name="btnBattleship" Click="btnBattleship_Click" Content="Battleship" Grid.Column="2"></Button>
             <Button Grid.Row="1" x:Name="btnBoat" Click="btnBoat_Click" Content="Boat" Grid.Column="3"></Button>
 
-            <Button Grid.Row="2" Grid.ColumnSpan="2" x:Name="btnCell" Content="Cell" Click="btnCell_Click"></Button>
+            <Button Grid.Row="2" x:Name="btnUnplace" Content="Undo" Click="btnUnplace_Click"></Button>
+            <Button Grid.Row="2" Grid.Column="1"  x:Name="btnCell" Content="Ready(Cell)" Click="btnCell_Click"></Button>
+            
 
 
             <CheckBox x:Name="horizontalCheckBox" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="horizontalCheckBox_Click">

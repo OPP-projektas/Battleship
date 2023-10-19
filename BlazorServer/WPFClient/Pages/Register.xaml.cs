@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFClient.Entities;
+using WPFClient.Entities.Decorator;
+using WPFClient.Entities.Prototype;
 
 namespace WPFClient.Pages
 {
@@ -21,6 +24,7 @@ namespace WPFClient.Pages
     /// </summary>
     public partial class Register : Page
     {
+        Logger logger = Logger.GetInstance();
         public Register()
         {
             InitializeComponent();
@@ -29,7 +33,8 @@ namespace WPFClient.Pages
         private void btnLogIn_Click(object sender, RoutedEventArgs e)
         {
 
-            UserInfo.Username = username.Text;
+            Player.Username = username.Text;
+            SetTextComponent();
 
             Uri preparationPageUri = new Uri("../Pages/MainMenu.xaml", UriKind.Relative);
 
@@ -38,6 +43,21 @@ namespace WPFClient.Pages
             if (parent != null)
             {
                 parent.MainFrame.Navigate(preparationPageUri);
+            }
+        }
+        private void SetTextComponent()
+        {
+            if (cbBold.IsChecked == true)
+            {
+                logger.cbBold = true;      
+            }
+            if (cbItalic.IsChecked == true)
+            {
+                logger.cbItalic = true;
+            }
+            if (cbUnderline.IsChecked == true)
+            {
+                logger.cbUnderline = true;
             }
         }
     }

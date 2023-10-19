@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace WPFClient.Entities
 {
-    class Player
+    public static class Player
     {
+        public static string Username = "";
     }
 }

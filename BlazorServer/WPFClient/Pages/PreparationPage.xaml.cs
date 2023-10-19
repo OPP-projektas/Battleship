@@ -15,6 +15,8 @@ using WPFClient.Entities.Strategy;
 using System.Reflection;
 using WPFClient.Entities.Prototype;
 using WPFClient.Entities.Singelton;
+using WPFClient.Entities.Command;
+using ICommand = WPFClient.Entities.Command.ICommand;
 
 namespace WPFClient.Pages
 {
@@ -24,13 +26,16 @@ namespace WPFClient.Pages
         Context context = new Context();
         ConcreteObserver observer = new ConcreteObserver();
         HubConnection lobbyConnection = SignalRConnectionManager.GetInstance().LobbyConnection;
-        string username = UserInfo.Username;
+        string username = Player.Username;
         IShipFactory shipFactory;
         private Ship selectedShip;
         private List<string> previewShipCells = new List<string>();
         private Board board = new Board();
         private Logger logger;
         private ConcreteBuilder concreteBuilder = new ConcreteBuilder();
+        ICommand placeShipCommand;
+        ICommand unplaceShipCommand;
+        Invoker commandInvoker = new Invoker();
         public PreparationPage()
         {
             InitializeComponent();
@@ -85,8 +90,6 @@ namespace WPFClient.Pages
             UpdateShipFactory();
             Ship ship = this.shipFactory.CreateShip(TypesOfShips.Battleship, username);
             selectedShip = ship;
-            //ShipFactory shipFactory = new BattleshipFactory();
-            //var factoryShip = shipFactory.CreateShip("My username");
         }
 
         private void btnCarrier_Click(object sender, RoutedEventArgs e)
@@ -94,8 +97,6 @@ namespace WPFClient.Pages
             UpdateShipFactory();
             Ship ship = this.shipFactory.CreateShip(TypesOfShips.Carrier, username);
             selectedShip = ship;
-            //ShipFactory shipFactory = new CarrierFactory();
-            //var factoryShip = shipFactory.CreateShip("My username");
         }
 
         private void btnSubmarine_Click(object sender, RoutedEventArgs e)
@@ -103,8 +104,6 @@ namespace WPFClient.Pages
             UpdateShipFactory();
             Ship ship = this.shipFactory.CreateShip(TypesOfShips.Submarine, username);
             selectedShip = ship;
-            //ShipFactory shipFactory = new SubmarineFactory();
-            //var factoryShip = shipFactory.CreateShip("My username");
         }
 
         private void btnBoat_Click(object sender, RoutedEventArgs e)
@@ -112,9 +111,6 @@ namespace WPFClient.Pages
             UpdateShipFactory();
             Ship ship = this.shipFactory.CreateShip(TypesOfShips.Boat, username);
             selectedShip = ship;
-            //ShipFactory shipFactory = new BoatFactory();
-            //var factoryShip = shipFactory.CreateShip("My username");
-
         }
         private void GameCell_Click(object sender, RoutedEventArgs e)
         {
@@ -142,25 +138,75 @@ namespace WPFClient.Pages
 
                 if (canPlace)
                 {
+                    List<Position> positions = new List<Position>();
                     foreach (string cellToMark in previewShipCells)
                     {
                         int y = Int32.Parse(cellToMark.Substring(1, 1))-1;
                         int x = Int32.Parse(cellToMark.Substring(2))-1;
-
-                        Button previewCell = FindName(cellToMark) as Button;
                         Position curPosition = new Position(x, y);
-                        board.ReplaceCell(curPosition);
+                        positions.Add(curPosition);
+                    }
+                    if(positions.Count > 0)
+                    {
+                        placeShipCommand = new PlaceShipCommand(positions, board);
+                        commandInvoker.SetCommand(placeShipCommand);
+                        commandInvoker.DoCommand();
+                        UpdateBoardUI();
+                    }
+                }
+
+            }
+        }
+        public void UpdateBoardUI()
+        {
+            for (int x = 0; x < 6; x++)
+            {
+                for (int y = 0; y < 6; y++)
+                {
+                    Position curPosition = new Position(y, x);
+                    string name = ConvertCoordinateToLetter(x);
+                    if (name == null)
+                        return;
+                    name = name + (x+1).ToString() + (y + 1).ToString();
+                    Button previewCell = FindName(name) as Button;
+                    if (board.GetCellByPosition(curPosition).GetType() == new OccupiedCell().GetType())
+                    {
                         if (previewCell != null)
                         {
                             previewCell.Background = Brushes.Pink;
                         }
                     }
-                    previewShipCells = new List<string>();
+                    else
+                    {
+                        if (previewCell != null)
+                        {
+                            Color defaultButtonColor = Color.FromRgb(221, 221, 221);
+                            SolidColorBrush defaultBrush = new SolidColorBrush(defaultButtonColor);
+                            previewCell.Background = defaultBrush;
+                        }
+                    }
                 }
-
             }
         }
-
+        private string ConvertCoordinateToLetter(int x)
+        {
+            switch (x)
+            {
+                case 0:
+                    return "A";
+                case 1:
+                    return "B";
+                case 2:
+                    return "C";
+                case 3:
+                    return "D";
+                case 4:
+                    return "E";
+                case 5:
+                    return "F";
+            }
+            return null;
+        }
         private bool CanPlaceShip(List<string> previewShipCells)
         {
             foreach (string cellToMark in previewShipCells)
@@ -323,6 +369,9 @@ namespace WPFClient.Pages
             context.DoStrategicSort(parts);
 
             subject.Ready();
+            Button previewCell = (Button)sender;
+            if (previewCell != null)
+                previewCell.Background = Brushes.Green;
 
             //-------------------------------------------------------------------------
 
@@ -334,6 +383,12 @@ namespace WPFClient.Pages
             //    StartPage startPage = new StartPage(board);
             //    parent.MainFrame.Navigate(startPage);
             //}
+        }
+
+        private void btnUnplace_Click(object sender, RoutedEventArgs e)
+        {
+            commandInvoker.UndoCommand();
+            UpdateBoardUI();
         }
     }
 }

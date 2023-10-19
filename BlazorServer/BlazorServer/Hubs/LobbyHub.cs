@@ -23,6 +23,14 @@ namespace BlazorServer.Hubs
             }
             return Clients.All.SendAsync("PlayerReadyMessage", user);
         }
+        public Task PlayerNotReady(string user)
+        {
+            if (!string.IsNullOrEmpty(user))
+            {
+                usernameToConnectionId.Remove(user);
+            }
+            return Clients.All.SendAsync("PlayerNotReadyMessage", user);
+        }
         public Task ReportBack(bool report, string coords)
         {
             Clients.All.SendAsync("Hit", report, coords);
@@ -101,7 +109,7 @@ namespace BlazorServer.Hubs
         {
             if (position < 0 || position >= dictionary.Count)
             {
-                return default(TKey); // Return the default value for TKey (null for strings)
+                return default(TKey); 
             }
 
             int index = 0;

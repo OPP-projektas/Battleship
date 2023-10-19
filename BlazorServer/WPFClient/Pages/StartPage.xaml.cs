@@ -25,7 +25,7 @@ namespace WPFClient.Pages
     public partial class StartPage : Page
     {
         HubConnection lobbyConnection = SignalRConnectionManager.GetInstance().LobbyConnection;
-        string username = UserInfo.Username;
+        string username = Player.Username;
         public Board AllyBoard;
         public bool myTurn;
 
@@ -140,7 +140,7 @@ namespace WPFClient.Pages
                 Button cellButton = (Button)sender;
                 string cellName = cellButton.Name;
                 cellName = cellName.Substring(cellName.Length-2);
-                await lobbyConnection.InvokeAsync("Shoot", UserInfo.Username, cellName);
+                await lobbyConnection.InvokeAsync("Shoot", Player.Username, cellName);
             }
             catch (Exception ex) 
             {

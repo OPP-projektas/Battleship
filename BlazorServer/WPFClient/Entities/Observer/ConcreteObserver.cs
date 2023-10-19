@@ -14,15 +14,16 @@ namespace WPFClient.Entities.Observer
     {
         Logger logger = Logger.GetInstance();
         HubConnection lobbyConnection = SignalRConnectionManager.GetInstance().LobbyConnection;
-        string username = UserInfo.Username;
+        string username = Player.Username;
 
         public void Update(ISubject subject)
         {
-            if((subject as Subject).State)
-            {
-                Message message = new Message();
-                message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
-                logger.Log(message);
+            Message message = new Message();
+            message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
+            logger.Log(message);
+
+            if ((subject as Subject).State)
+            {               
                 if (lobbyConnection.State != HubConnectionState.Connected)
                 {
                     var result = Task.Run(async () => await OpenPlayerLobbyConnection(lobbyConnection));
@@ -31,6 +32,16 @@ namespace WPFClient.Entities.Observer
                 var a = Task.Run(async () => await PlayerReady(username));
                 a.Wait();
 
+            }
+            else
+            {
+                if (lobbyConnection.State != HubConnectionState.Connected)
+                {
+                    var result = Task.Run(async () => await OpenPlayerLobbyConnection(lobbyConnection));
+                    result.Wait();
+                }
+                var a = Task.Run(async () => await PlayerNotReady(username));
+                a.Wait();
             }
         }
         private async Task OpenPlayerLobbyConnection(HubConnection lobbyConnection)
@@ -48,6 +59,16 @@ namespace WPFClient.Entities.Observer
             try
             {
                 await lobbyConnection.InvokeAsync("PlayerReady", username);
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        private async Task PlayerNotReady(string username)
+        {
+            try
+            {
+                await lobbyConnection.InvokeAsync("PlayerNotReady", username);
             }
             catch (Exception ex)
             {

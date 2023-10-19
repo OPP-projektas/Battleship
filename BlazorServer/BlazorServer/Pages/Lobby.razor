@@ -73,6 +73,14 @@
                 await InvokeAsync(StateHasChanged);
             }
         });
+        hubConnection.On<string>("PlayerNotReadyMessage", async (user) =>
+        {
+            if (readyPlayers.Contains(user))
+            {
+                readyPlayers.Remove(user);
+                await InvokeAsync(StateHasChanged);
+            }
+        });
 
         hubConnection.On<string, int>("CounterIncrement", (user, value) =>
         {

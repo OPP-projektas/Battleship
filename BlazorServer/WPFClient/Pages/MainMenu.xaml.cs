@@ -114,7 +114,7 @@ namespace WPFClient.Pages
         {
             try
             {
-                await connection.InvokeAsync("SendMessage", UserInfo.Username, messageInput.Text);
+                await connection.InvokeAsync("SendMessage", Player.Username, messageInput.Text);
 
             }
             catch (Exception ex)
@@ -141,7 +141,7 @@ namespace WPFClient.Pages
         {
             try
             {
-                await counterConnection.InvokeAsync("AddToTotal", UserInfo.Username, 1);
+                await counterConnection.InvokeAsync("AddToTotal", Player.Username, 1);
 
             }
             catch (Exception ex)

@@ -18,13 +18,25 @@
 
             <TextBox x:Name="username" Grid.Row="0" Text="Enter username" FontSize="20" HorizontalAlignment="Center" Width="300" Height="30"/>
 
-        <Button x:Name="btnLogIn" Grid.Row="0" HorizontalAlignment="Center" Click="btnLogIn_Click"
+            <Button x:Name="btnLogIn" Grid.Row="0" HorizontalAlignment="Center" Click="btnLogIn_Click"
                 Padding="20 10" Margin="20">
-            Log in
-        </Button>
+                Log in
+            </Button>
+            <Label HorizontalAlignment="Center">Choose logger text modifications:</Label>
+            
+            <CheckBox Margin="120,0" x:Name="cbBold" FontWeight="Bold">Bold</CheckBox>
+            <CheckBox Margin="120,0" x:Name="cbItalic" FontStyle="Italic">Italic</CheckBox>
+            <CheckBox Margin="120,0" x:Name="cbUnderline">
+                <TextBlock>
+                    <Underline>
+                        Underline
+                    </Underline>    
+                </TextBlock>
+            </CheckBox>
+
         </StackPanel>
 
-        
+
 
     </Grid>
 </Page>
