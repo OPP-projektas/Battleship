@@ -18,7 +18,17 @@ namespace WPFClient.Entities.Builder
         {
             this._parts.Add(shipType);
         }
-
+        public void RemoveLast()
+        {
+            if (_parts.Count > 0)
+            {
+                _parts.RemoveAt(_parts.Count - 1);
+            }
+        }
+        public int GetAmountOfParts()
+        {
+            return this._parts.Count;
+        }
         public Dictionary<TypesOfShips,int> ListParts()
         {
 

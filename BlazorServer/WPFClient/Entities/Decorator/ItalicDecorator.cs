@@ -10,25 +10,21 @@ using System.Windows.Media;
 
 namespace WPFClient.Entities.Decorator
 {
-    public class ItalicDecorator : TextComponent
+    public class ItalicDecorator : Decorator
     {
-        private TextComponent component;
 
-        public ItalicDecorator(TextComponent component)
+        public ItalicDecorator(TextComponent component) : base(component)
         {
-            this.component = component;
         }
 
-        public Run GetFormattedText()
+        public override Run GetFormattedText(Run run)
         {
-            Run formattedText = component.GetFormattedText();
-            formattedText.FontStyle = FontStyles.Italic;
-            return formattedText;
+            run.FontStyle = FontStyles.Italic;
+            return base.GetFormattedText(run);
         }
-
         public string GetText()
         {
-            return component.GetText();
+            return base.GetText();
         }
     }
 }

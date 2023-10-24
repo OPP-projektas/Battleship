@@ -12,5 +12,6 @@ namespace WPFClient.Entities.Builder
         IBuilder BuildBattleship();
         IBuilder BuildSubmarine();
         IBuilder BuildCarrier();
+        IBuilder BuildMessage();
     }
 }

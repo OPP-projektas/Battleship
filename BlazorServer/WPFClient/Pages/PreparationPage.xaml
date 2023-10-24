@@ -32,9 +32,12 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height=".6*"/>
             <RowDefinition Height=".3*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Label HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black">Your Board</Label>
+        
+        <Label VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Red" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1">Select Logging Order:</Label>
 
         <components:Log Grid.Row="2" Grid.ColumnSpan="3" x:Name="loggerMessages"/>
 
@@ -118,8 +121,13 @@
             </Grid.ColumnDefinitions>
 
 
-            <Label VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Red" Grid.Row="0" Grid.ColumnSpan="4">Place your boats</Label>
 
+            <ComboBox x:Name="cbLoggingOrder" SelectedValuePath="Content" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
+                <ComboBoxItem>Ascending Amount</ComboBoxItem>
+                <ComboBoxItem>Ascending Length</ComboBoxItem>
+                <ComboBoxItem>Descending Amount</ComboBoxItem>
+                <ComboBoxItem>Descending Length</ComboBoxItem>
+            </ComboBox>
             <Button Grid.Row="1" x:Name="btnCarrier" Click="btnCarrier_Click" Content="Carrier" Grid.Column="0"></Button>
             <Button Grid.Row="1" x:Name="btnSubmarine" Click="btnSubmarine_Click" Content="Submarine" Grid.Column="1"></Button>
             <Button Grid.Row="1" x:Name="btnBattleship" Click="btnBattleship_Click" Content="Battleship" Grid.Column="2"></Button>
@@ -127,15 +135,13 @@
 
             <Button Grid.Row="2" x:Name="btnUnplace" Content="Undo" Click="btnUnplace_Click"></Button>
             <Button Grid.Row="2" Grid.Column="1"  x:Name="btnCell" Content="Ready(Cell)" Click="btnCell_Click"></Button>
-            
+
 
 
             <CheckBox x:Name="horizontalCheckBox" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="horizontalCheckBox_Click">
                 Place Horizontal
             </CheckBox>
         </Grid>
-
-
-
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="lblStatus" Grid.Row="3" Grid.ColumnSpan="4" Foreground="Red" FontWeight="Bold">Status: Not Ready</Label>
     </Grid>
 </Page>

@@ -47,5 +47,10 @@ namespace WPFClient.Entities.Observer
             this.State = true;
             this.Notify();
         }
+        public void UnReady()
+        {
+            this.State = false;
+            this.Notify();
+        }
     }
 }

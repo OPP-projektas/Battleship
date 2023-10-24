@@ -41,21 +41,23 @@ namespace WPFClient.Entities.Prototype
         }
         private TextBlock SetTextComponent(string text)
         {
-            TextComponent decorator = new PlainText(text);
+            TextComponent textComponent = new ConcreteTextComponent();
             if (cbBold)
             {
-                decorator = new BoldDecorator(decorator);
+                textComponent = new BoldDecorator(textComponent);
             }
             if (cbItalic)
             {
-                decorator = new ItalicDecorator(decorator);
+                textComponent = new ItalicDecorator(textComponent);
             }
             if (cbUnderline)
             {
-                decorator = new UnderlineDecorator(decorator);
+                textComponent = new UnderlineDecorator(textComponent);
             }
+            Run run = new Run(text);
+            Run formattedRun = textComponent.GetFormattedText(run);
             TextBlock block = new TextBlock();
-            block.Inlines.Add(decorator.GetFormattedText());
+            block.Inlines.Add(formattedRun);
             return block;
         }
         public void Log(Message message)

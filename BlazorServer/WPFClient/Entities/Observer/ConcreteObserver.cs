@@ -10,7 +10,7 @@ using WPFClient.Entities.Singelton;
 
 namespace WPFClient.Entities.Observer
 {
-    class ConcreteObserver : IObserver
+    public class ConcreteObserver : IObserver
     {
         Logger logger = Logger.GetInstance();
         HubConnection lobbyConnection = SignalRConnectionManager.GetInstance().LobbyConnection;
@@ -31,7 +31,6 @@ namespace WPFClient.Entities.Observer
                 }
                 var a = Task.Run(async () => await PlayerReady(username));
                 a.Wait();
-
             }
             else
             {

@@ -9,24 +9,21 @@ using System.Windows.Documents;
 
 namespace WPFClient.Entities.Decorator
 {
-    public class BoldDecorator : TextComponent
+    public class BoldDecorator : Decorator
     {
-        private TextComponent component;
 
-        public BoldDecorator(TextComponent component)
+        public BoldDecorator(TextComponent component) : base (component)
         {
-            this.component = component;
         }
 
-        public Run GetFormattedText()
+        public override Run GetFormattedText(Run run)
         {
-            Run formattedText = component.GetFormattedText();
-            formattedText.FontWeight = FontWeights.Bold;
-            return formattedText;
+            run.FontWeight = FontWeights.Bold;
+            return base.GetFormattedText(run);
         }
         public string GetText()
         {
-            return component.GetText();
+            return base.GetText();
         }
     }
 }

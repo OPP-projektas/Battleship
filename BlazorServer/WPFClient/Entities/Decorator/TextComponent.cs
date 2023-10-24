@@ -8,9 +8,9 @@ using System.Windows.Documents;
 
 namespace WPFClient.Entities.Decorator
 {
-    public interface TextComponent
+    public abstract class TextComponent
     {
-        string GetText();
-        Run GetFormattedText();
+        public abstract string GetText();
+        public abstract Run GetFormattedText(Run run);
     }
 }

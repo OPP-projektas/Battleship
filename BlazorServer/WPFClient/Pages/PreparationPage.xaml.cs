@@ -32,9 +32,10 @@ namespace WPFClient.Pages
         private List<string> previewShipCells = new List<string>();
         private Board board = new Board();
         private Logger logger;
-        private ConcreteBuilder concreteBuilder = new ConcreteBuilder();
+        public ShipBuilder shipBuilder = new ShipBuilder();
+        public Director shipDirector = new Director();
         ICommand placeShipCommand;
-        ICommand unplaceShipCommand;
+        ICommand readyCommand;
         Invoker commandInvoker = new Invoker();
         public PreparationPage()
         {
@@ -43,11 +44,10 @@ namespace WPFClient.Pages
             Message message = new Message();
             message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
             logger.Log(message);
-
+            cbLoggingOrder.SelectedIndex = 0;
             var result = Task.Run(async() => await OpenPlayerLobbyConnection());
             result.Wait();
-
-            subject.Attach(observer);
+            readyCommand = new ReadyCommand(subject, observer);
         }
         private async Task OpenPlayerLobbyConnection()
         {
@@ -225,22 +225,20 @@ namespace WPFClient.Pages
 
         private void BuildShip()
         {
+            shipDirector.Builder = shipBuilder;
             switch (selectedShip.Length)
             {
                 case 1:
-                    concreteBuilder.BuildBoat();
+                    shipDirector.BuildBoat();
                     break;
                 case 2:
-                    concreteBuilder.BuildBattleship();
+                    shipDirector.BuildBattleship();
                     break;
                 case 3:
-                    concreteBuilder.BuildSubmarine();
+                    shipDirector.BuildSubmarine();
                     break;
                 case 4:
-                    concreteBuilder.BuildCarrier();
-                    break;
-                default:
-                    concreteBuilder.Reset();
+                    shipDirector.BuildCarrier();
                     break;
             }              
         }
@@ -354,41 +352,54 @@ namespace WPFClient.Pages
 
         private void btnCell_Click(object sender, RoutedEventArgs e)
         {
-            var parts = concreteBuilder.GetProduct().ListParts();
+            var parts = shipBuilder.GetProduct().ListParts();
+            switch (cbLoggingOrder.SelectedValue.ToString()) 
+            {
+                case "Ascending Amount":
+                    context.SetStrategy(new AscendingAmount());
+                    context.DoStrategicSort(parts);
+                    break;
+                case "Ascending Length":
+                    context.SetStrategy(new AscendingLength());
+                    context.DoStrategicSort(parts);
+                    break;
+                case "Descending Amount":
+                    context.SetStrategy(new DescendingAmount());
+                    context.DoStrategicSort(parts);
+                    break;
+                case "Descending Length":
+                    context.SetStrategy(new DescedingLength());
+                    context.DoStrategicSort(parts);
+                    break;
+            }
 
-            context.SetStrategy(new AscendingLength());
-            context.DoStrategicSort(parts);
-
-            context.SetStrategy(new DescedingLength());
-            context.DoStrategicSort(parts);
-
-            context.SetStrategy(new AscendingAmount());
-            context.DoStrategicSort(parts);
-
-            context.SetStrategy(new DescendingAmount());
-            context.DoStrategicSort(parts);
-
-            subject.Ready();
-            Button previewCell = (Button)sender;
-            if (previewCell != null)
-                previewCell.Background = Brushes.Green;
-
-            //-------------------------------------------------------------------------
-
-
-            //MainWindow parent = Window.GetWindow(this) as MainWindow;
-
-            //if (parent != null)
-            //{
-            //    StartPage startPage = new StartPage(board);
-            //    parent.MainFrame.Navigate(startPage);
-            //}
+            commandInvoker.SetCommand(readyCommand);
+            commandInvoker.DoCommand();
+            lblStatus.Content = "Status: READY!";
+            lblStatus.Foreground = Brushes.Green;
+            btnBattleship.IsEnabled = false;
+            btnBoat.IsEnabled = false;
+            btnCarrier.IsEnabled = false;
+            btnSubmarine.IsEnabled = false;
+            cbLoggingOrder.IsEnabled = false;
+            horizontalCheckBox.IsEnabled = false;
+            btnCell.IsEnabled = false;
         }
 
         private void btnUnplace_Click(object sender, RoutedEventArgs e)
         {
             commandInvoker.UndoCommand();
+            shipBuilder.GetProduct().RemoveLast();
             UpdateBoardUI();
+            lblStatus.Content = "Status: NOT READY!";
+            lblStatus.Foreground = Brushes.Red;
+            btnBattleship.IsEnabled = true;
+            btnBoat.IsEnabled = true;
+            btnCarrier.IsEnabled = true;
+            btnSubmarine.IsEnabled = true;
+            cbLoggingOrder.IsEnabled = true;
+            horizontalCheckBox.IsEnabled = true;
+            btnCell.IsEnabled = true;
         }
     }
 }

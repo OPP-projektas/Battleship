@@ -16,19 +16,19 @@ namespace WPFClient.Entities.Builder
         }
         public void BuildBoat()
         {
-            this._builder.BuildBoat();
+            this._builder.BuildBoat().BuildMessage();
         }
         public void BuildBattleship()
         {
-            this._builder.BuildBattleship();
+            this._builder.BuildBattleship().BuildMessage();
         }
         public void BuildSubmarine()
         {
-            this._builder.BuildSubmarine();
+            this._builder.BuildSubmarine().BuildMessage();
         }
         public void BuildCarrier()
         {
-            this._builder.BuildCarrier();
+            this._builder.BuildCarrier().BuildMessage();
         }
     }
 }

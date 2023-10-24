@@ -9,25 +9,20 @@ using System.Windows.Documents;
 
 namespace WPFClient.Entities.Decorator
 {
-    public class UnderlineDecorator : TextComponent
+    public class UnderlineDecorator : Decorator
     {
-        private TextComponent component;
-
-        public UnderlineDecorator(TextComponent component)
+        public UnderlineDecorator(TextComponent component) : base(component)
         {
-            this.component = component;
         }
 
-        public Run GetFormattedText()
+        public override Run GetFormattedText(Run run)
         {
-            Run formattedText = component.GetFormattedText();
-            formattedText.TextDecorations = TextDecorations.Underline;
-            return formattedText;
+            run.TextDecorations = TextDecorations.Underline;
+            return base.GetFormattedText(run);
         }
-
         public string GetText()
         {
-            return component.GetText();
+            return base.GetText();
         }
     }
 }
