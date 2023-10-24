@@ -60,12 +60,12 @@ namespace WPFClient.Entities.Prototype
             block.Inlines.Add(formattedRun);
             return block;
         }
-        public void Log(Message message)
+        public void Log(IPrototype message)
         {
             if (messageListBox != null)
             {
                 //PROTOTYPE
-                logEntry = message.DeepCopy();
+                logEntry = (Message)message.DeepCopy();
 
                 string plainText = "[" + logEntry.Timestamp.ToString() + "] Username: " + logEntry.Name + " | Body: " + logEntry.Content.body;
 

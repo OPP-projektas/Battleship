@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WPFClient.Entities.Prototype
 {
-    class Message
+    class Message : IPrototype
     {
         public string Name = Player.Username;
         public Content Content = new Content();
@@ -17,19 +17,17 @@ namespace WPFClient.Entities.Prototype
         {
             Content.body = message;
         }
-
-        public Message ShallowCopy()
-        {
-            return (Message)MemberwiseClone();
-        }
-
-        public Message DeepCopy()
+        public IPrototype DeepCopy()
         {
             Message clone = (Message)MemberwiseClone();
             clone.Name = string.Copy(Name);
             clone.Timestamp = Timestamp;
             clone.Content = new Content(Content.body);
             return clone;
+        }       
+        public IPrototype ShallowCopy()
+        {
+            return (Message)MemberwiseClone();
         }
     }
 
