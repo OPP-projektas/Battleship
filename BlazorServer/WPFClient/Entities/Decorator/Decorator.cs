@@ -25,10 +25,5 @@ namespace WPFClient.Entities.Decorator
         {
             return _textComponent.GetFormattedText(run);
         }
-
-        public override string GetText()
-        {
-            return _textComponent.GetText();
-        }
     }
 }

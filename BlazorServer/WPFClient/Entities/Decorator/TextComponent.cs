@@ -10,7 +10,6 @@ namespace WPFClient.Entities.Decorator
 {
     public abstract class TextComponent
     {
-        public abstract string GetText();
         public abstract Run GetFormattedText(Run run);
     }
 }

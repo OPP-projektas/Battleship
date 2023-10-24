@@ -22,9 +22,5 @@ namespace WPFClient.Entities.Decorator
             run.FontStyle = FontStyles.Italic;
             return base.GetFormattedText(run);
         }
-        public string GetText()
-        {
-            return base.GetText();
-        }
     }
 }

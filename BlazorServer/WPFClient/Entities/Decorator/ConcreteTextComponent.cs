@@ -13,10 +13,5 @@ namespace WPFClient.Entities.Decorator
         {
             return run;
         }
-
-        public override string GetText()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -20,9 +20,5 @@ namespace WPFClient.Entities.Decorator
             run.TextDecorations = TextDecorations.Underline;
             return base.GetFormattedText(run);
         }
-        public string GetText()
-        {
-            return base.GetText();
-        }
     }
 }
