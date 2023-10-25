@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,26 +11,26 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WPFClient.Entities;
+using WPFClient.Entities.Adapter;
+using WPFClient.Entities.Bridge;
+using WPFClient.Entities.Facade;
 using WPFClient.Entities.Facotries;
 using WPFClient.Entities.Singelton;
 
 namespace WPFClient.Pages
 {
-    /// <summary>
-    /// Interaction logic for StartPage.xaml
-    /// </summary>
-    public partial class StartPage : Page
+    public partial class GamePage : Page
     {
         HubConnection lobbyConnection = SignalRConnectionManager.GetInstance().LobbyConnection;
         string username = Player.Username;
         public Board AllyBoard;
         public bool myTurn;
+        IPlayer mp3Player = new Mp3Player();
+        IPlayer wavPlayer = new WavPlayer();
+        Entities.Adapter.MediaPlayer mediaAdapter;
 
-        public StartPage(Board board)
+        public GamePage(Board board)
         {
             InitializeComponent();
             var result = Task.Run(async () => await OpenPlayerLobbyConnection());
@@ -57,15 +58,22 @@ namespace WPFClient.Pages
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    if(myTurn)
+                    IColorPicker backGroundColorPicker = new ColorBackground();
+                    IColorPicker textColorPicker = new ColorText();
+                    Theme buttonTheme;
+                    if (myTurn)
                     {
-                        if(hit)
+                        if (hit)
                         {
                             string name = "Enemy_" + coords;
                             Button previewCell = FindName(name) as Button;
                             if (previewCell != null)
                             {
-                                previewCell.Background = Brushes.Green;
+                                buttonTheme = new LightTheme(backGroundColorPicker);
+                                buttonTheme.ColorButton(previewCell);
+                                buttonTheme = new WhiteTheme(textColorPicker);
+                                buttonTheme.ColorButton(previewCell);
+                                
                             }
                         }
                         else
@@ -74,7 +82,11 @@ namespace WPFClient.Pages
                             Button previewCell = FindName(name) as Button;
                             if (previewCell != null)
                             {
-                                previewCell.Background = Brushes.Gray;
+                                buttonTheme = new NeutralTheme(backGroundColorPicker);
+                                buttonTheme.ColorButton(previewCell);
+                                buttonTheme = new BlackTheme(textColorPicker);
+                                buttonTheme.ColorButton(previewCell);
+                                mediaAdapter.PlayFullVolume("error.wav");
                             }
                         }
                     }
@@ -86,7 +98,10 @@ namespace WPFClient.Pages
                             Button previewCell = FindName(name) as Button;
                             if (previewCell != null)
                             {
-                                previewCell.Background = Brushes.Red;
+                                buttonTheme = new DarkTheme(backGroundColorPicker);
+                                buttonTheme.ColorButton(previewCell);
+                                buttonTheme = new WhiteTheme(textColorPicker);
+                                buttonTheme.ColorButton(previewCell);
                             }
                         }
                         else
@@ -95,7 +110,10 @@ namespace WPFClient.Pages
                             Button previewCell = FindName(name) as Button;
                             if (previewCell != null)
                             {
-                                previewCell.Background = Brushes.Gray;
+                                buttonTheme = new NeutralTheme(backGroundColorPicker);
+                                buttonTheme.ColorButton(previewCell);
+                                buttonTheme = new BlackTheme(textColorPicker);
+                                buttonTheme.ColorButton(previewCell);
                             }
                         }
                     }
@@ -140,7 +158,15 @@ namespace WPFClient.Pages
                 Button cellButton = (Button)sender;
                 string cellName = cellButton.Name;
                 cellName = cellName.Substring(cellName.Length-2);
-                await lobbyConnection.InvokeAsync("Shoot", Player.Username, cellName);
+                Shot.CellName = cellName;
+
+                mediaAdapter = new MediaAdapter(mp3Player);
+                Facade facade = new Facade(lobbyConnection, mediaAdapter);
+
+                ShootingClient client = new ShootingClient(facade);
+                client.Shoot();
+
+                //await lobbyConnection.InvokeAsync("Shoot", Player.Username, cellName);
             }
             catch (Exception ex) 
             {

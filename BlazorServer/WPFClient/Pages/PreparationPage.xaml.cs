@@ -19,6 +19,8 @@ using WPFClient.Entities.Command;
 using ICommand = WPFClient.Entities.Command.ICommand;
 using MediaPlayer = WPFClient.Entities.Adapter.MediaPlayer;
 using WPFClient.Entities.Adapter;
+using WPFClient.Entities.Facade;
+using WPFClient.Entities.Bridge;
 
 namespace WPFClient.Pages
 {
@@ -40,6 +42,7 @@ namespace WPFClient.Pages
         ICommand readyCommand;
         Invoker commandInvoker = new Invoker();
         MediaPlayer mediaPlayer;
+        IPlayer mp3Player = new Mp3Player();
         public PreparationPage()
         {
             InitializeComponent();
@@ -68,7 +71,7 @@ namespace WPFClient.Pages
 
                         if (parent != null)
                         {
-                            StartPage startPage = new StartPage(board);
+                            GamePage startPage = new GamePage(board);
                             parent.MainFrame.Navigate(startPage);
                         }
                     });
@@ -153,11 +156,18 @@ namespace WPFClient.Pages
                     {
                         placeShipCommand = new PlaceShipCommand(positions, board);
                         commandInvoker.SetCommand(placeShipCommand);
-                        commandInvoker.DoCommand();
-                        UpdateBoardUI();
-                        IPlayer mp3Player = new Mp3Player();
+
+                        //commandInvoker.DoCommand();
+                        //IPlayer mp3Player = new Mp3Player();
+                        //mediaPlayer = new MediaAdapter(mp3Player);
+                        //mediaPlayer.PlayFullVolume("yeah_boy.mp3");
+
                         mediaPlayer = new MediaAdapter(mp3Player);
-                        mediaPlayer.PlayFullVolume("yeah_boy.mp3");
+                        Facade facade = new Facade(commandInvoker, mediaPlayer);
+                        ShipPlacingClient client = new ShipPlacingClient(facade);
+                        client.PlaceShip();
+
+                        UpdateBoardUI();
                     }
                 }
 

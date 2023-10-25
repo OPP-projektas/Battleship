@@ -19,7 +19,7 @@
     <Compile Update="Pages\Register.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\StartPage.xaml.cs">
+    <Compile Update="Pages\GamePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -39,7 +39,7 @@
     <Page Update="Pages\Register.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Pages\StartPage.xaml">
+    <Page Update="Pages\GamePage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

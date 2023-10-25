@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPFClient.Entities.Adapter
 {
-    internal interface IPlayer
+    public interface IPlayer
     {
         void PlaySound(string fileName, int volume);
     }

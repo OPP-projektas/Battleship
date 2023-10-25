@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPFClient.Entities.Adapter
 {
-    interface MediaPlayer
+    public interface MediaPlayer
     {
         void PlayFullVolume(string fileName);
         void PlayHalfVolume(string fileName);

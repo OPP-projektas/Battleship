@@ -8,7 +8,7 @@ using WPFClient.Sounds;
 
 namespace WPFClient.Entities.Adapter
 {
-    class MediaAdapter : MediaPlayer
+    public class MediaAdapter : MediaPlayer
     {
         public string path = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName, "Sounds");
         private IPlayer _player;

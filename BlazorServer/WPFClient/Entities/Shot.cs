@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace WPFClient.Entities
 {
-    class Shot
+    public static class Shot
     {
+        public static string CellName = "";
     }
 }
