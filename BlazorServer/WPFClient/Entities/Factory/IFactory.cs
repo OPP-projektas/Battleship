@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace WPFClient.Entities.Facotries
 {
     public interface IFactory
-    {
-        
+    {     
         void Place();
     }
 }

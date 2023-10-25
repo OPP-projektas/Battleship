@@ -11,11 +11,9 @@ namespace WPFClient.Entities
     public class Board
     {
         public IFactory[,] boardMatrix = new IFactory[6,6];
+        public CellFactory concreteCellFactory = new ConcreteCellFactory();
         public Board()
         {
-
-            CellFactory concreteCellFactory = new ConcreteCellFactory();
-
             for (int i = 0; i < 6; i++)
             {
                 for (int j = 0; j < 6; j++)
@@ -30,13 +28,11 @@ namespace WPFClient.Entities
         }
         public void OccupyCell(Position position)
         {
-            CellFactory concreteCellFactory = new ConcreteCellFactory();
             var concreteCell = concreteCellFactory.GetCell(CellFactory.CellType.Occupied);
             boardMatrix[position._x, position._y] = concreteCell;
         }
         public void UnoccupyCell(Position position)
         {
-            CellFactory concreteCellFactory = new ConcreteCellFactory();
             var concreteCell = concreteCellFactory.GetCell(CellFactory.CellType.Free);
             boardMatrix[position._x, position._y] = concreteCell;
         }

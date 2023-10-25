@@ -17,6 +17,8 @@ using WPFClient.Entities.Prototype;
 using WPFClient.Entities.Singelton;
 using WPFClient.Entities.Command;
 using ICommand = WPFClient.Entities.Command.ICommand;
+using MediaPlayer = WPFClient.Entities.Adapter.MediaPlayer;
+using WPFClient.Entities.Adapter;
 
 namespace WPFClient.Pages
 {
@@ -37,6 +39,7 @@ namespace WPFClient.Pages
         ICommand placeShipCommand;
         ICommand readyCommand;
         Invoker commandInvoker = new Invoker();
+        MediaPlayer mediaPlayer;
         public PreparationPage()
         {
             InitializeComponent();
@@ -152,6 +155,9 @@ namespace WPFClient.Pages
                         commandInvoker.SetCommand(placeShipCommand);
                         commandInvoker.DoCommand();
                         UpdateBoardUI();
+                        IPlayer mp3Player = new Mp3Player();
+                        mediaPlayer = new MediaAdapter(mp3Player);
+                        mediaPlayer.PlayFullVolume("yeah_boy.mp3");
                     }
                 }
 
@@ -388,6 +394,9 @@ namespace WPFClient.Pages
 
         private void btnUnplace_Click(object sender, RoutedEventArgs e)
         {
+            IPlayer wavPlayer = new WavPlayer();
+            mediaPlayer = new MediaAdapter(wavPlayer);
+            mediaPlayer.PlayFullVolume("error.wav");
             commandInvoker.UndoCommand();
             shipBuilder.GetProduct().RemoveLast();
             UpdateBoardUI();

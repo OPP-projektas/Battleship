@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPFClient.Entities
+namespace WPFClient.Entities.Adapter
 {
-    public class Cell
+    internal interface IPlayer
     {
-        public bool isOccupied = false;
+        void PlaySound(string fileName, int volume);
     }
 }
