@@ -21,6 +21,7 @@ using MediaPlayer = WPFClient.Entities.Adapter.MediaPlayer;
 using WPFClient.Entities.Adapter;
 using WPFClient.Entities.Facade;
 using WPFClient.Entities.Bridge;
+using System.Linq;
 
 namespace WPFClient.Pages
 {
@@ -36,7 +37,11 @@ namespace WPFClient.Pages
         private List<string> previewShipCells = new List<string>();
         private Board board = new Board();
         private Logger logger;
-        public ShipBuilder shipBuilder = new ShipBuilder();
+        public List<TypesOfShips> shipList = new List<TypesOfShips>();
+        public BuilderAbstract boatBuilder = new BoatBuilder();
+        public BuilderAbstract battleshipBuilder = new BattleshipBuilder();
+        public BuilderAbstract submarineBuilder = new SubmarineBuilder();
+        public BuilderAbstract carrierBuilder = new CarrierBuilder();
         public Director shipDirector = new Director();
         ICommand placeShipCommand;
         ICommand readyCommand;
@@ -241,22 +246,26 @@ namespace WPFClient.Pages
 
         private void BuildShip()
         {
-            shipDirector.Builder = shipBuilder;
             switch (selectedShip.Length)
             {
                 case 1:
-                    shipDirector.BuildBoat();
+                    shipDirector.AbstractBuilder = boatBuilder;
+                    shipList.Add(TypesOfShips.Boat);
                     break;
                 case 2:
-                    shipDirector.BuildBattleship();
+                    shipDirector.AbstractBuilder = battleshipBuilder;
+                    shipList.Add(TypesOfShips.Battleship);
                     break;
                 case 3:
-                    shipDirector.BuildSubmarine();
+                    shipDirector.AbstractBuilder = submarineBuilder;
+                    shipList.Add(TypesOfShips.Submarine);
                     break;
                 case 4:
-                    shipDirector.BuildCarrier();
+                    shipDirector.AbstractBuilder = carrierBuilder;
+                    shipList.Add(TypesOfShips.Carrier);
                     break;
-            }              
+            }
+            shipDirector.BuildShipWithMessage();
         }
         private string AddLetterToCoordinates(string x)
         {
@@ -368,7 +377,9 @@ namespace WPFClient.Pages
 
         private void btnCell_Click(object sender, RoutedEventArgs e)
         {
-            var parts = shipBuilder.GetProduct().ListParts();
+            var temp = Helper.ConcatDictionairies(boatBuilder.GetProduct().ListParts(), battleshipBuilder.GetProduct().ListParts());
+            var temp2 = Helper.ConcatDictionairies(submarineBuilder.GetProduct().ListParts(), carrierBuilder.GetProduct().ListParts());
+            var parts = Helper.ConcatDictionairies(temp, temp2);
             switch (cbLoggingOrder.SelectedValue.ToString()) 
             {
                 case "Ascending Amount":
@@ -407,8 +418,9 @@ namespace WPFClient.Pages
             IPlayer wavPlayer = new WavPlayer();
             mediaPlayer = new MediaAdapter(wavPlayer);
             mediaPlayer.PlayFullVolume("error.wav");
-            commandInvoker.UndoCommand();
-            shipBuilder.GetProduct().RemoveLast();
+            var lastCommand = commandInvoker.UndoCommand();
+            if(lastCommand != null  && lastCommand.GetType().Name != "ReadyCommand")
+                Helper.RemoveLastShip(shipList, boatBuilder, battleshipBuilder, submarineBuilder, carrierBuilder);
             UpdateBoardUI();
             lblStatus.Content = "Status: NOT READY!";
             lblStatus.Foreground = Brushes.Red;

@@ -13,6 +13,7 @@ namespace WPFClient.Entities.Prototype
         public Content Content = new Content();
         public DateTime Timestamp = DateTime.Now;
 
+        public Message() { }
         public void SetMessage(string message)
         {
             Content.body = message;
@@ -24,10 +25,10 @@ namespace WPFClient.Entities.Prototype
             clone.Timestamp = Timestamp;
             clone.Content = new Content(Content.body);
             return clone;
-        }       
+        }
         public IPrototype ShallowCopy()
         {
-            return (Message)MemberwiseClone();
+            return this;
         }
     }
 

@@ -11,7 +11,8 @@ namespace WPFClient.Entities.Facotries
         public enum CellType
         {
             Occupied,
-            Free
+            Free,
+            Wreck
         }
         public abstract IFactory GetCell(CellType type);
     }

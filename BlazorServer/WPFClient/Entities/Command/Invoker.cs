@@ -29,7 +29,7 @@ namespace WPFClient.Entities.Command
                 logger.Log(message);
             }
         }
-        public void UndoCommand()
+        public ICommand UndoCommand()
         {
             if(_commandStack.Count > 0)
             {
@@ -38,7 +38,9 @@ namespace WPFClient.Entities.Command
                 Message message = new Message();
                 message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
                 logger.Log(message);
+                return lastCommand;
             }
+            return null;
         }
     }
 }

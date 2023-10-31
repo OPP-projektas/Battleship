@@ -16,6 +16,8 @@ namespace WPFClient.Entities.Facotries
                     return new OccupiedCell();
                 case CellType.Free:
                     return new FreeCell();
+                case CellType.Wreck:
+                    return new WreckCell();
                 default:
                     return null;
             }

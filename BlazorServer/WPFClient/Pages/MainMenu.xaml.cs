@@ -88,6 +88,8 @@ namespace WPFClient.Pages
 
         private async void openConnection_Click(object sender, RoutedEventArgs e)
         {
+
+
             connection.On<string, string>("ReceiveMessage", (user, message) =>
             {
                 this.Dispatcher.Invoke(() =>

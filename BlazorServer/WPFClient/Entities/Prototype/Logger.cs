@@ -14,6 +14,7 @@ namespace WPFClient.Entities.Prototype
         private static Logger instance;
         private ListBox messageListBox;
         private Message logEntry = new Message();
+        private Message logEntryShallow = new Message();
         private TextComponent textComponent;
         public bool cbBold = false;
         public bool cbItalic = false;
@@ -66,14 +67,20 @@ namespace WPFClient.Entities.Prototype
             {
                 //PROTOTYPE
                 logEntry = (Message)message.DeepCopy();
+                //logEntryShallow = (Message)message.ShallowCopy();
 
-                string plainText = "[" + logEntry.Timestamp.ToString() + "] Username: " + logEntry.Name + " | Body: " + logEntry.Content.body;
+                string plainText = "DeepCopy HASHCODE =" + logEntry.GetHashCode() + "[" + logEntry.Timestamp.ToString() + "] Username: " + logEntry.Name + " | Body: " + logEntry.Content.body;
+                //string plainTextOG = "OG HASHCODE ="+message.GetHashCode()+"[" + logEntry.Timestamp.ToString() + "] Username: " + logEntry.Name + " | Body: " + logEntry.Content.body;
+                //string plainTextShallow = "ShallowCopy HASHCODE ="+logEntryShallow.GetHashCode()+"[" + logEntry.Timestamp.ToString() + "] Username: " + logEntry.Name + " | Body: " + logEntry.Content.body;
 
                 //DECORATOR
                 TextBlock formattedText = SetTextComponent(plainText);
+                //TextBlock formattedTextOG = SetTextComponent(plainTextOG);
+                //TextBlock formattedTextShallow = SetTextComponent(plainTextShallow);
 
                 messageListBox.Items.Add(formattedText);
-                //messageListBox.Items.Add(formattedText);
+                //messageListBox.Items.Add(formattedTextOG);
+                //messageListBox.Items.Add(formattedTextShallow);
                 messageListBox.ScrollIntoView(messageListBox.Items[messageListBox.Items.Count - 1]);
             }
         }
