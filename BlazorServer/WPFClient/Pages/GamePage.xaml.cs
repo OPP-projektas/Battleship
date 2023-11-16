@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ using WPFClient.Entities.Bridge;
 using WPFClient.Entities.Facade;
 using WPFClient.Entities.Facotries;
 using WPFClient.Entities.Singelton;
+using WPFClient.Entities.Template;
 
 namespace WPFClient.Pages
 {
@@ -61,10 +63,16 @@ namespace WPFClient.Pages
                     IColorPicker backGroundColorPicker = new ColorBackground();
                     IColorPicker textColorPicker = new ColorText();
                     Theme buttonTheme;
+                    Saver saverTxt = new TxtSaver();
+                    Saver saverCsv = new ExcelSaver();
                     if (myTurn)
                     {
                         if (hit)
                         {
+                            saverTxt.Save("leaderboard", 1);
+                            saverCsv.Save("leaderboard", 1);
+
+
                             string name = "Enemy_" + coords;
                             Button previewCell = FindName(name) as Button;
                             if (previewCell != null)
