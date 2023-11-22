@@ -17,7 +17,7 @@ namespace WPFClient.Entities.Template
             else
                 SaveUser(fileName, toSave);
             //Sort();
-
+              
         }
         protected List<string> Format(int score)
         {

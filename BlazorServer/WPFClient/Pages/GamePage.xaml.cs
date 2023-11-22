@@ -130,6 +130,8 @@ namespace WPFClient.Pages
 
             AllyBoard = board;
             ColorBoard();
+
+            lblhp.Content = AllyBoard.GetLength().ToString();
         }
 
         private async Task ReportBack(string coords)

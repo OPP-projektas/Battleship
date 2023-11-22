@@ -265,6 +265,7 @@ namespace WPFClient.Pages
                     shipList.Add(TypesOfShips.Carrier);
                     break;
             }
+            board.Add(selectedShip);
             shipDirector.BuildShipWithMessage();
         }
         private string AddLetterToCoordinates(string x)

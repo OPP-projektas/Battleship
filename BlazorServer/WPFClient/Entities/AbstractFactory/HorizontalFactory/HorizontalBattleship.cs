@@ -20,5 +20,7 @@ namespace WPFClient.Entities.AbstractFactory.VerticalFactory
             Length = 2;
 
         }
+
+
     }
 }

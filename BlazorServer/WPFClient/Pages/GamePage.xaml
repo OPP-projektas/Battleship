@@ -24,7 +24,8 @@
         <Label HorizontalAlignment="Center" FontWeight="Bold" Foreground="Black">Your Board</Label>
         <Label Grid.Column="1" x:Name="lblTurn" FontWeight="Bold" HorizontalAlignment="Center">Turn indicator</Label>
         <Label Grid.Column="2" FontWeight="Bold" HorizontalAlignment="Center" Foreground="Black">The Enemy Board</Label>
-        
+        <Label Grid.Column="1" Grid.Row="1" x:Name="lblhp" FontWeight="Bold" HorizontalAlignment="Center"></Label>
+
         <Grid Grid.Row="1">
             <!-- Define the game board grid -->
             <Grid Name="GameBoard" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="DarkGreen">

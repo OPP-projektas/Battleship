@@ -27,8 +27,9 @@ namespace WPFClient.Entities.Command
         {
             foreach (var position in _position)
             {
-                _board.UnoccupyCell(position);
+                _board.UnoccupyCell(position);             
             }
+            _board.Remove();
         }
     }
 }
