@@ -12,11 +12,16 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
+using WPFClient.Components;
 using WPFClient.Entities;
 using WPFClient.Entities.Adapter;
 using WPFClient.Entities.Bridge;
 using WPFClient.Entities.Facade;
 using WPFClient.Entities.Facotries;
+using WPFClient.Entities.Flyweight;
+using WPFClient.Entities.Prototype;
 using WPFClient.Entities.Singelton;
 using WPFClient.Entities.Template;
 
@@ -31,12 +36,15 @@ namespace WPFClient.Pages
         IPlayer mp3Player = new Mp3Player();
         IPlayer wavPlayer = new WavPlayer();
         Entities.Adapter.MediaPlayer mediaAdapter;
+        private Logger logger;
+        FlyweightFactory flyWeightFactory = new FlyweightFactory();
 
         public GamePage(Board board)
         {
             InitializeComponent();
             var result = Task.Run(async () => await OpenPlayerLobbyConnection());
             result.Wait();
+            logger = Logger.GetInstance();
 
             lobbyConnection.On<bool>("DecideTurn", (isYourTurn) =>
             {
@@ -132,6 +140,39 @@ namespace WPFClient.Pages
             ColorBoard();
 
             lblhp.Content = AllyBoard.GetLength().ToString();
+            canvas.Width = this.ActualWidth; 
+            canvas.Height = this.ActualHeight;
+            for (int i = 0; i < 150; i++) // You can adjust the number of rectangles as needed
+            {
+                MovingRectangle baseMovingRectangle = new MovingRectangle(Brushes.Blue);
+                IFlyweight ImovingRectangle = flyWeightFactory.GetFlyweight(baseMovingRectangle.rectangle);
+                if (i % 3 == 0)
+                {
+                    ImovingRectangle = flyWeightFactory.GetFlyweight(new MovingRectangle(Brushes.LightBlue).rectangle);
+                }
+                else if (i % 3 == 1)
+                {
+                    ImovingRectangle = flyWeightFactory.GetFlyweight(new MovingRectangle(Brushes.Black).rectangle);
+                }
+
+                var movingRectangle = new MovingRectangle(ImovingRectangle.Operation().Fill);
+
+                canvas.Children.Add(movingRectangle);
+                
+                // Set the initial position of each rectangle
+                Canvas.SetLeft(movingRectangle, (i * 25)-250); // Adjust the spacing as needed
+
+                // Start animation for each rectangle
+                StartAnimation(movingRectangle);
+                StartAnimationHorizontal(movingRectangle);
+            }
+            Message message = new Message();
+            var flyweights = flyWeightFactory.ListFlyweights();
+            foreach(var fw in flyweights)
+            {
+                message.SetMessage(fw);
+                logger.Log(message);
+            }
         }
 
         private async Task ReportBack(string coords)
@@ -259,6 +300,75 @@ namespace WPFClient.Pages
             }
             return 0;
         }
+        private void StartAnimation(MovingRectangle movingRectangle)
+        {
+            Random rnd = new Random();
+            int min = 20;
+            int max = 1250 - 20;
+            DoubleAnimation animation = new DoubleAnimation
+            {
+                From = -250,
+                To = min + (rnd.NextDouble() * (max - min)),
+                Duration = new Duration(TimeSpan.FromSeconds(10)),
+                RepeatBehavior = RepeatBehavior.Forever
+            };
 
+            movingRectangle.BeginAnimation(Canvas.TopProperty, animation);
+        }
+        private void StartAnimationHorizontal(MovingRectangle movingRectangle)
+        {
+            Random rnd = new Random();
+            int min = 1000;
+            int max = 1500;
+            double from = min + (rnd.NextDouble() * (max - min));
+            int i = rnd.Next(0, 5);
+            {
+                if (i < 0.5)
+                {
+                    DoubleAnimation animation = new DoubleAnimation
+                    {
+                        From = from,
+                        To = min-max,
+                        Duration = new Duration(TimeSpan.FromSeconds(10)),
+                        RepeatBehavior = RepeatBehavior.Forever
+                    };
+                    movingRectangle.BeginAnimation(Canvas.LeftProperty, animation);
+                }
+                else if(i < 1.5)
+                {
+                    DoubleAnimation animation = new DoubleAnimation
+                    {
+                        From = from-(1.25*max),
+                        To = max,
+                        Duration = new Duration(TimeSpan.FromSeconds(10)),
+                        RepeatBehavior = RepeatBehavior.Forever
+                    };
+                    movingRectangle.BeginAnimation(Canvas.LeftProperty, animation);
+                }
+                else if (i < 2.5)
+                {
+                    DoubleAnimation animation = new DoubleAnimation
+                    {
+                        From = 500,
+                        To = from,
+                        Duration = new Duration(TimeSpan.FromSeconds(10)),
+                        RepeatBehavior = RepeatBehavior.Forever
+                    };
+                    movingRectangle.BeginAnimation(Canvas.LeftProperty, animation);
+                }
+                else
+                {
+                    DoubleAnimation animation = new DoubleAnimation
+                    {
+                        From = 500,
+                        To = min + (rnd.NextDouble() * (max - min))-max,
+                        Duration = new Duration(TimeSpan.FromSeconds(10)),
+                        RepeatBehavior = RepeatBehavior.Forever
+                    };
+                    movingRectangle.BeginAnimation(Canvas.LeftProperty, animation);
+                }
+            }
+
+        }
     }
 }

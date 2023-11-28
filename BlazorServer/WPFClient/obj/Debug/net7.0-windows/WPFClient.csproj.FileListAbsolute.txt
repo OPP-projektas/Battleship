@@ -183,3 +183,4 @@ C:\Users\test\Documents\GitHub\BattleshipNew\BlazorServer\WPFClient\obj\Debug\ne
 C:\Users\test\Documents\GitHub\BattleshipNew\BlazorServer\WPFClient\obj\Debug\net7.0-windows\WPFClient.pdb
 C:\Users\test\Documents\GitHub\BattleshipNew\BlazorServer\WPFClient\obj\Debug\net7.0-windows\WPFClient.genruntimeconfig.cache
 C:\Users\test\Documents\GitHub\BattleshipNew\BlazorServer\WPFClient\obj\Debug\net7.0-windows\ref\WPFClient.dll
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\bin\Debug\net7.0-windows\Newtonsoft.Json.dll

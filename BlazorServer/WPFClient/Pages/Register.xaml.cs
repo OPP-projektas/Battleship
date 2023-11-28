@@ -24,7 +24,7 @@ namespace WPFClient.Pages
             Player.Username = username.Text;
             SetTextComponent();
 
-            Uri preparationPageUri = new Uri("../Pages/MainMenu.xaml", UriKind.Relative);
+            Uri preparationPageUri = new Uri("../Pages/PreparationPage.xaml", UriKind.Relative);
 
             MainWindow parent = Window.GetWindow(this) as MainWindow;
 
