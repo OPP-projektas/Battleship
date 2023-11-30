@@ -170,3 +170,46 @@ C:\Users\test\Documents\GitHub\BattleshipNew\BlazorServer\BlazorServer\obj\Debug
 C:\Users\test\Documents\GitHub\BattleshipNew\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.pdb
 C:\Users\test\Documents\GitHub\BattleshipNew\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.genruntimeconfig.cache
 C:\Users\test\Documents\GitHub\BattleshipNew\BlazorServer\BlazorServer\obj\Debug\net7.0\ref\BlazorServer.dll
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\appsettings.Development.json
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\appsettings.json
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\BlazorServer.staticwebassets.runtime.json
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\BlazorServer.exe
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\BlazorServer.deps.json
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\BlazorServer.runtimeconfig.json
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\BlazorServer.dll
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\BlazorServer.pdb
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.AspNetCore.Connections.Abstractions.dll
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.AspNetCore.Http.Connections.Client.dll
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.AspNetCore.Http.Connections.Common.dll
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.AspNetCore.SignalR.Client.dll
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.AspNetCore.SignalR.Client.Core.dll
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.AspNetCore.SignalR.Common.dll
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.Extensions.Features.dll
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.csproj.AssemblyReference.cache
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.GeneratedMSBuildEditorConfig.editorconfig
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.AssemblyInfoInputs.cache
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.AssemblyInfo.cs
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.csproj.CoreCompileInputs.cache
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.MvcApplicationPartsAssemblyInfo.cache
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.RazorAssemblyInfo.cache
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.RazorAssemblyInfo.cs
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\staticwebassets\msbuild.BlazorServer.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\staticwebassets\msbuild.build.BlazorServer.props
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.BlazorServer.props
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.BlazorServer.props
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\staticwebassets.pack.json
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\staticwebassets.build.json
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\staticwebassets.development.json
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\scopedcss\bundle\BlazorServer.styles.css
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\scopedcss\projectbundle\BlazorServer.bundle.scp.css
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.csproj.CopyComplete
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.dll
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\refint\BlazorServer.dll
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.pdb
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\BlazorServer.genruntimeconfig.cache
+D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\BlazorServer\obj\Debug\net7.0\ref\BlazorServer.dll

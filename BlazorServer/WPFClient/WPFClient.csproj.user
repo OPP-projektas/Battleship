@@ -10,6 +10,12 @@
     <Compile Update="Components\Log.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Pages\GameLost.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\GameWon.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\MainMenu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -28,6 +34,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Components\Log.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\GameLost.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\GameWon.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\MainMenu.xaml">

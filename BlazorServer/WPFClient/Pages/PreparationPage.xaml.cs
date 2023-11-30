@@ -22,6 +22,7 @@ using WPFClient.Entities.Adapter;
 using WPFClient.Entities.Facade;
 using WPFClient.Entities.Bridge;
 using System.Linq;
+using WPFClient.Entities.State;
 
 namespace WPFClient.Pages
 {
@@ -48,6 +49,8 @@ namespace WPFClient.Pages
         Invoker commandInvoker = new Invoker();
         MediaPlayer mediaPlayer;
         IPlayer mp3Player = new Mp3Player();
+        GameStateContext gameStateContext = new GameStateContext(new GameStartedState());
+
         public PreparationPage()
         {
             InitializeComponent();
@@ -72,13 +75,7 @@ namespace WPFClient.Pages
                 {
                     this.Dispatcher.Invoke(() =>
                     {
-                        MainWindow parent = Window.GetWindow(this) as MainWindow;
-
-                        if (parent != null)
-                        {
-                            GamePage startPage = new GamePage(board);
-                            parent.MainFrame.Navigate(startPage);
-                        }
+                        gameStateContext.ChangeGamePageRequest(this, board);
                     });
                 });
             }

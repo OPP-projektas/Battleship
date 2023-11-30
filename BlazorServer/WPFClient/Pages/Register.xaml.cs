@@ -2,8 +2,10 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using WPFClient.Entities;
 using WPFClient.Entities.Prototype;
+using WPFClient.Entities.State;
 
 namespace WPFClient.Pages
 {
@@ -13,6 +15,7 @@ namespace WPFClient.Pages
     public partial class Register : Page
     {
         Logger logger = Logger.GetInstance();
+        GameStateContext gameStateContext = new GameStateContext(new LoggedInState());
         public Register()
         {
             InitializeComponent();
@@ -20,18 +23,10 @@ namespace WPFClient.Pages
 
         private void btnLogIn_Click(object sender, RoutedEventArgs e)
         {
-
             Player.Username = username.Text;
             SetTextComponent();
 
-            Uri preparationPageUri = new Uri("../Pages/PreparationPage.xaml", UriKind.Relative);
-
-            MainWindow parent = Window.GetWindow(this) as MainWindow;
-
-            if (parent != null)
-            {
-                parent.MainFrame.Navigate(preparationPageUri);
-            }
+            gameStateContext.ChangeGamePageRequest(this, null);
         }
         private void SetTextComponent()
         {

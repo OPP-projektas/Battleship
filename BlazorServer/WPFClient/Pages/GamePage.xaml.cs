@@ -23,6 +23,7 @@ using WPFClient.Entities.Facotries;
 using WPFClient.Entities.Flyweight;
 using WPFClient.Entities.Prototype;
 using WPFClient.Entities.Singelton;
+using WPFClient.Entities.State;
 using WPFClient.Entities.Template;
 
 namespace WPFClient.Pages
@@ -38,6 +39,7 @@ namespace WPFClient.Pages
         Entities.Adapter.MediaPlayer mediaAdapter;
         private Logger logger;
         FlyweightFactory flyWeightFactory = new FlyweightFactory();
+        private int currentLives = 0;
 
         public GamePage(Board board)
         {
@@ -119,6 +121,8 @@ namespace WPFClient.Pages
                                 buttonTheme = new WhiteTheme(textColorPicker);
                                 buttonTheme.ColorButton(previewCell);
                             }
+
+                            currentLives--;
                         }
                         else
                         {
@@ -133,6 +137,12 @@ namespace WPFClient.Pages
                             }
                         }
                     }
+
+                    if(currentLives < 1)
+                    {
+                        GameStateContext gameStateContext = new GameStateContext(new GameLostState());
+                        gameStateContext.ChangeGamePageRequest(this, null);
+                    }
                 });
             });
 
@@ -140,9 +150,10 @@ namespace WPFClient.Pages
             ColorBoard();
 
             lblhp.Content = AllyBoard.GetLength().ToString();
+            currentLives = AllyBoard.GetLength();
             canvas.Width = this.ActualWidth; 
             canvas.Height = this.ActualHeight;
-            for (int i = 0; i < 150; i++) // You can adjust the number of rectangles as needed
+            for (int i = 0; i < 150; i++) 
             {
                 MovingRectangle baseMovingRectangle = new MovingRectangle(Brushes.Blue);
                 IFlyweight ImovingRectangle = flyWeightFactory.GetFlyweight(baseMovingRectangle.rectangle);
@@ -159,10 +170,8 @@ namespace WPFClient.Pages
 
                 canvas.Children.Add(movingRectangle);
                 
-                // Set the initial position of each rectangle
-                Canvas.SetLeft(movingRectangle, (i * 25)-250); // Adjust the spacing as needed
+                Canvas.SetLeft(movingRectangle, (i * 25)-250); 
 
-                // Start animation for each rectangle
                 StartAnimation(movingRectangle);
                 StartAnimationHorizontal(movingRectangle);
             }
