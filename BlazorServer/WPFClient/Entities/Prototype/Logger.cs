@@ -6,6 +6,7 @@ using WPFClient.Entities.Decorator;
 using System.Windows.Media;
 using Microsoft.Extensions.Logging;
 using System.Windows.Documents;
+using WPFClient.Entities.ChainOfResponsability;
 
 namespace WPFClient.Entities.Prototype
 {
@@ -61,7 +62,7 @@ namespace WPFClient.Entities.Prototype
             block.Inlines.Add(formattedRun);
             return block;
         }
-        public void Log(IPrototype message)
+        public void Log(IPrototype message, int level = 1)
         {
             if (messageListBox != null)
             {
@@ -74,11 +75,20 @@ namespace WPFClient.Entities.Prototype
                 //string plainTextShallow = "ShallowCopy HASHCODE ="+logEntryShallow.GetHashCode()+"[" + logEntry.Timestamp.ToString() + "] Username: " + logEntry.Name + " | Body: " + logEntry.Content.body;
 
                 //DECORATOR
+                RedHandler red = new RedHandler(4);
+                WhiteHandler white = new WhiteHandler(2);
+                BlackHandler black = new BlackHandler(1);
+                PurpleHandler purple = new PurpleHandler(3);
+                red.SetNext(white).SetNext(black).SetNext(purple);
+
                 TextBlock formattedText = SetTextComponent(plainText);
+
+                TextBlock coloredText = red.Handle(formattedText, level);
+
                 //TextBlock formattedTextOG = SetTextComponent(plainTextOG);
                 //TextBlock formattedTextShallow = SetTextComponent(plainTextShallow);
 
-                messageListBox.Items.Add(formattedText);
+                messageListBox.Items.Add(coloredText);
                 //messageListBox.Items.Add(formattedTextOG);
                 //messageListBox.Items.Add(formattedTextShallow);
                 messageListBox.ScrollIntoView(messageListBox.Items[messageListBox.Items.Count - 1]);

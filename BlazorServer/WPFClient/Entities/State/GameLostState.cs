@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using WPFClient.Entities.Proxy;
 
 namespace WPFClient.Entities.State
 {
-    public class GameLostState : GameState
+    public class GameLostState : GameState, IProxyInterface
     {
         public override void HandleGamePageChange(Page page, Board? board)
         {
@@ -20,8 +21,10 @@ namespace WPFClient.Entities.State
             {
                 parent.MainFrame.Navigate(preparationPageUri);
             }
-
-
+        }
+        public void Request(Page page, Board? board)
+        {
+            HandleGamePageChange(page, board);
         }
     }
 }

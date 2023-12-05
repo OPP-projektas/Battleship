@@ -241,3 +241,8 @@ C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\obj\Debug
 C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages\GameWon.g.cs
 C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages\GameLost.baml
 C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages\GameWon.baml
+C:\Users\test\Documents\GitHub\BattleshipNew\BlazorServer\WPFClient\bin\Debug\net7.0-windows\Newtonsoft.Json.dll
+C:\Users\test\Documents\GitHub\BattleshipNew\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages\GameLost.g.cs
+C:\Users\test\Documents\GitHub\BattleshipNew\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages\GameWon.g.cs
+C:\Users\test\Documents\GitHub\BattleshipNew\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages\GameLost.baml
+C:\Users\test\Documents\GitHub\BattleshipNew\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages\GameWon.baml

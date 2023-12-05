@@ -23,6 +23,7 @@ using WPFClient.Entities.Facade;
 using WPFClient.Entities.Facotries;
 using WPFClient.Entities.Flyweight;
 using WPFClient.Entities.Prototype;
+using WPFClient.Entities.Proxy;
 using WPFClient.Entities.Singelton;
 using WPFClient.Entities.State;
 using WPFClient.Entities.Template;
@@ -158,13 +159,19 @@ namespace WPFClient.Pages
                     }
                     if (currentEnemyLives == 0)
                     {
-                        GameStateContext gameStateContext = new GameStateContext(new GameWonState());
-                        gameStateContext.ChangeGamePageRequest(this, null);
+                        /*GameStateContext gameStateContext = new GameStateContext(new GameWonState());
+                        gameStateContext.ChangeGamePageRequest(this, null);*/
+
+                        Proxy proxy = new Proxy(new GameWonState());
+                        proxy.Request(this, null);
                     }
                     else if (currentLives < 1)
                     {
-                        GameStateContext gameStateContext = new GameStateContext(new GameLostState());
-                        gameStateContext.ChangeGamePageRequest(this, null);
+                        /*GameStateContext gameStateContext = new GameStateContext(new GameLostState());
+                        gameStateContext.ChangeGamePageRequest(this, null);*/
+
+                        Proxy proxy = new Proxy(new GameLostState());
+                        proxy.Request(this, null);
                     }
                 });
             });

@@ -156,6 +156,7 @@ namespace WPFClient.Pages
                     }
                     if(positions.Count > 0)
                     {
+                        board.Add(selectedShip);
                         placeShipCommand = new PlaceShipCommand(positions, board);
                         commandInvoker.SetCommand(placeShipCommand);
 
@@ -262,7 +263,6 @@ namespace WPFClient.Pages
                     shipList.Add(TypesOfShips.Carrier);
                     break;
             }
-            board.Add(selectedShip);
             shipDirector.BuildShipWithMessage();
         }
         private string AddLetterToCoordinates(string x)

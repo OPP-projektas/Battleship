@@ -15,7 +15,7 @@ namespace WPFClient.Entities.AbstractFactory.VerticalFactory
             Logger logger = Logger.GetInstance();
             Message message = new Message();
             message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
-            logger.Log(message);
+            logger.Log(message,3);
             Length = 3;
         }
     }
