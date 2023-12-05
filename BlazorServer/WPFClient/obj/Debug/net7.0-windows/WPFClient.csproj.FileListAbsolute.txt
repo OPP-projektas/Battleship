@@ -237,3 +237,7 @@ D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServe
 D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages\GameWon.g.cs
 D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages\GameLost.baml
 D:\Mokslai\7 semestras\Objektinis programų projektavimas\Battleship\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages\GameWon.baml
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages\GameLost.g.cs
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages\GameWon.g.cs
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages\GameLost.baml
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\obj\Debug\net7.0-windows\Pages\GameWon.baml

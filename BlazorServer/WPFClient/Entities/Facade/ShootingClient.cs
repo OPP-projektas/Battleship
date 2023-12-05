@@ -13,9 +13,9 @@ namespace WPFClient.Entities.Facade
         {
             _facade = facade;
         }
-        public void Shoot()
+        public async Task Shoot()
         {
-            _facade.Shoot();
+            await _facade.Shoot();
         }
     }
 }

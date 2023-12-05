@@ -9,6 +9,6 @@
       Title="GameLost">
 
     <Grid>
-        
+        <Label>Loser royale</Label>
     </Grid>
 </Page>

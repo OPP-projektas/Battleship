@@ -26,7 +26,7 @@ namespace WPFClient.Entities.Facade
             _commandInvoker = invoker;
             _mediaAdapter = mediaAdapter;
         }
-        public async void Shoot()
+        public async Task Shoot()
         {
             _mediaAdapter.PlayFullVolume("yeah_boy.mp3");
             await _connection.InvokeAsync("Shoot", Player.Username, Shot.CellName);

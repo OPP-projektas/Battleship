@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Printing;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,10 +41,14 @@ namespace WPFClient.Pages
         private Logger logger;
         FlyweightFactory flyWeightFactory = new FlyweightFactory();
         private int currentLives = 0;
+        private int currentEnemyLives = -1;
 
         public GamePage(Board board)
         {
             InitializeComponent();
+            AllyBoard = board;
+            currentLives = AllyBoard.GetLength();
+            lblhp.Content = AllyBoard.GetLength().ToString();
             var result = Task.Run(async () => await OpenPlayerLobbyConnection());
             result.Wait();
             logger = Logger.GetInstance();
@@ -58,6 +63,19 @@ namespace WPFClient.Pages
                 });
             });
 
+            lobbyConnection.On<Dictionary<string,int>>("DecideLives", (livesDict) =>
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    if (livesDict.Keys.Contains(Player.Username) && livesDict.Keys.Count == 2)
+                    {
+                        currentLives = livesDict[Player.Username];
+                        currentEnemyLives = livesDict.Where(pair => pair.Key != Player.Username).FirstOrDefault().Value;
+                        LogHp();              
+                    }
+                });
+            });
+
             lobbyConnection.On<string>("CheckIfHit", (coords) =>
             {
                 this.Dispatcher.Invoke(async () =>
@@ -66,9 +84,12 @@ namespace WPFClient.Pages
                 });
             });
 
+            var res = Task.Run(() => SendHp());
+
+
             lobbyConnection.On<bool, string>("Hit", (hit, coords) =>
             {
-                this.Dispatcher.Invoke(() =>
+                this.Dispatcher.Invoke(()  =>
                 {
                     IColorPicker backGroundColorPicker = new ColorBackground();
                     IColorPicker textColorPicker = new ColorText();
@@ -121,8 +142,6 @@ namespace WPFClient.Pages
                                 buttonTheme = new WhiteTheme(textColorPicker);
                                 buttonTheme.ColorButton(previewCell);
                             }
-
-                            currentLives--;
                         }
                         else
                         {
@@ -137,20 +156,20 @@ namespace WPFClient.Pages
                             }
                         }
                     }
-
-                    if(currentLives < 1)
+                    if (currentEnemyLives == 0)
+                    {
+                        GameStateContext gameStateContext = new GameStateContext(new GameWonState());
+                        gameStateContext.ChangeGamePageRequest(this, null);
+                    }
+                    else if (currentLives < 1)
                     {
                         GameStateContext gameStateContext = new GameStateContext(new GameLostState());
                         gameStateContext.ChangeGamePageRequest(this, null);
                     }
                 });
             });
+            ColorBoard();         
 
-            AllyBoard = board;
-            ColorBoard();
-
-            lblhp.Content = AllyBoard.GetLength().ToString();
-            currentLives = AllyBoard.GetLength();
             canvas.Width = this.ActualWidth; 
             canvas.Height = this.ActualHeight;
             for (int i = 0; i < 150; i++) 
@@ -182,8 +201,20 @@ namespace WPFClient.Pages
                 message.SetMessage(fw);
                 logger.Log(message);
             }
+            
         }
-
+        private void LogHp()
+        {
+            Message message = new Message();
+            message.SetMessage("Enemy lives = " + currentEnemyLives.ToString());
+            logger.Log(message);
+            message.SetMessage("My lives = " + currentLives.ToString());
+            logger.Log(message);         
+        }
+        private async Task SendHp()
+        {
+            await lobbyConnection.InvokeAsync("RefreshHp", Player.Username, currentLives);
+        }
         private async Task ReportBack(string coords)
         {
             if (CheckIfHit(coords))
@@ -196,6 +227,7 @@ namespace WPFClient.Pages
             }
 
         }
+
         private async Task OpenPlayerLobbyConnection()
         {
             try
@@ -223,9 +255,11 @@ namespace WPFClient.Pages
                 mediaAdapter = new MediaAdapter(mp3Player);
                 Facade facade = new Facade(lobbyConnection, mediaAdapter);
 
+               
                 ShootingClient client = new ShootingClient(facade);
-                client.Shoot();
+                await client.Shoot();
 
+                
                 //await lobbyConnection.InvokeAsync("Shoot", Player.Username, cellName);
             }
             catch (Exception ex) 

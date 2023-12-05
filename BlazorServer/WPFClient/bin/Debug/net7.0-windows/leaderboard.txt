@@ -1,9 +1,24 @@
-b,5
-a,5
+b,19
+a,36
 ook,4
-Enter username,5
+Enter username,50
 2,5
 1,2
 Enter usernameads,1
 5,6
 Enter usernameppp,4
+Enter usernamed,12
+Enter usernames,7
+Enter usernamde,2
+Enter usernamssse,1
+dasd,2
+Enter sdsa,1
+Enter usernamesd,1
+dasda,1
+d,5
+s,8
+asd,3
+v,2
+cv,7
+as,4
+xc,4

@@ -9,6 +9,7 @@
       Title="GameWon">
 
     <Grid>
-        
+        <Label>Vicotry royale
+        </Label>
     </Grid>
 </Page>

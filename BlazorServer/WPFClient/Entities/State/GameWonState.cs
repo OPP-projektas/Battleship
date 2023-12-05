@@ -12,7 +12,7 @@ namespace WPFClient.Entities.State
     {
         public override void HandleGamePageChange(Page page, Board? board)
         {
-            Uri preparationPageUri = new Uri("../Pages/FinishPage.xaml", UriKind.Relative);
+            Uri preparationPageUri = new Uri("../Pages/GameWon.xaml", UriKind.Relative);
 
             MainWindow parent = Window.GetWindow(page) as MainWindow;
 

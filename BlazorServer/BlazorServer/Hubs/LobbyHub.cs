@@ -6,9 +6,16 @@ namespace BlazorServer.Hubs
     {
         private static readonly Dictionary<string, string> usernameToConnectionId = new Dictionary<string, string>();
         private static Dictionary<string, bool> turnDict = new Dictionary<string, bool>();
-        public Task AddToTotal(string user, int value)
+        private static Dictionary<string, int> livesDict = new Dictionary<string, int>();
+
+        public async Task RefreshHp(string user, int value)
         {
-            return Clients.All.SendAsync("CounterIncrement", user, value);
+            livesDict[user] = value;
+            if (livesDict.Keys.Count > 1)
+            {
+                await Task.Delay(100);
+                await Clients.All.SendAsync("DecideLives", livesDict);
+            }
         }
 
         public Task AdmitPlayer(string user)
@@ -32,12 +39,28 @@ namespace BlazorServer.Hubs
             return Clients.All.SendAsync("PlayerNotReadyMessage", user);
         }
         public Task ReportBack(bool report, string coords)
-        {
+        {         
+            if (report)
+            {
+                string firstKey = GetKeyAtPosition(turnDict, 0);
+                string secondKey = GetKeyAtPosition(turnDict, 1);
+                if (turnDict[firstKey])
+                {
+                    livesDict[secondKey]--;
+                }
+                else if (turnDict[secondKey])
+                {
+                    livesDict[firstKey]--;
+                }
+                var result = Task.Run(async () => await Clients.All.SendAsync("DecideLives", livesDict));
+                result.Wait();
+            }
             Clients.All.SendAsync("Hit", report, coords);
             if (!report)
             {
                 var result = Task.Run(async () => await ChangeTurn());
                 result.Wait();
+               
             }
             return Clients.All.SendAsync("ReportBack", report);
         }
@@ -67,7 +90,6 @@ namespace BlazorServer.Hubs
         public async Task Shoot(string username, string cellName)
         {
             await Clients.All.SendAsync("Shoot", username, cellName);
-
             string firstKey = GetKeyAtPosition(turnDict, 0);
             string secondKey = GetKeyAtPosition(turnDict, 1);
 
@@ -87,6 +109,38 @@ namespace BlazorServer.Hubs
             }
 
         }
+        //public async Task SendHp(int lives)
+        //{
+        //    string firstKey = GetKeyAtPosition(turnDict, 0);
+        //    string secondKey = GetKeyAtPosition(turnDict, 1);
+        //    usernameToConnectionId.TryGetValue(firstKey, out string fisrstTargetConnectionId);
+        //    usernameToConnectionId.TryGetValue(secondKey, out string secondTargetConnectionId);
+        //    if (turnDict[firstKey])
+        //    {
+        //        await Clients.Client(fisrstTargetConnectionId).SendAsync("GetEnemyHp", lives);
+        //    }   
+        //    if (turnDict[secondKey])
+        //    {
+        //        await Clients.Client(secondTargetConnectionId).SendAsync("GetEnemyHp", lives);
+        //    }
+        //}
+        //public async Task SendHpReverse(int lives)
+        //{
+        //    string firstKey = GetKeyAtPosition(turnDict, 0);
+        //    string secondKey = GetKeyAtPosition(turnDict, 1);
+        //    usernameToConnectionId.TryGetValue(firstKey, out string fisrstTargetConnectionId);
+        //    usernameToConnectionId.TryGetValue(secondKey, out string secondTargetConnectionId);
+        //    if (turnDict[secondKey])
+        //    {
+        //        await Clients.Client(fisrstTargetConnectionId).SendAsync("GetEnemyHp", lives);
+        //    }
+        //    if (turnDict[firstKey])
+        //    {
+        //        await Clients.Client(secondTargetConnectionId).SendAsync("GetEnemyHp", lives);
+        //    }
+        //}
+
+    
         public async Task ChangeTurn()
         {
             string firstKey = GetKeyAtPosition(turnDict, 0);
