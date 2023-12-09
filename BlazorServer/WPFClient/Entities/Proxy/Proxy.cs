@@ -22,6 +22,8 @@ namespace WPFClient.Entities.Proxy
 
         public void Request(Page page, Board? board)
         {
+            if (page == null)
+                return;
             this._realSubject.Request(page, board);
 
             this.PlaySound();

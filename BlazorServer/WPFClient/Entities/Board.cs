@@ -42,7 +42,7 @@ namespace WPFClient.Entities
             return boardMatrix[position._x, position._y];
         }
 
-        // Composire
+        // Composite
 
         protected List<Componentumas> _children = new List<Componentumas>();
 
