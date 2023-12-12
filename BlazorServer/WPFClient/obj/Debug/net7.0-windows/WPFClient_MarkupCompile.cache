@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\test\Documents\GitHub\BattleshipNew\BlazorServer\WPFClient\obj\Debug\net7.0-windows\
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\obj\Debug\net7.0-windows\
 WPFClient
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-C:\Users\test\Documents\GitHub\BattleshipNew\BlazorServer\WPFClient\App.xaml
+C:\Users\Mano\Desktop\Github garbage\Battleship\BlazorServer\WPFClient\App.xaml
 81004190071
 
-117424219687
-214831560268
+123178836615
+214705427048
 Components\Log.xaml;MainWindow.xaml;Pages\GameLost.xaml;Pages\GamePage.xaml;Pages\GameWon.xaml;Pages\MainMenu.xaml;Pages\PreparationPage.xaml;Pages\Register.xaml;
 
 False

@@ -24,6 +24,7 @@ using WPFClient.Entities.Bridge;
 using System.Linq;
 using WPFClient.Entities.State;
 using WPFClient.Entities.Interpreter;
+using WPFClient.Entities.Mediator;
 
 namespace WPFClient.Pages
 {
@@ -51,6 +52,9 @@ namespace WPFClient.Pages
         MediaPlayer mediaPlayer;
         IPlayer mp3Player = new Mp3Player();
         GameStateContext gameStateContext = new GameStateContext();
+        private ReadyButtonComponent component1;
+        private UndoButtonComponent component2;
+        private ElementsHolder elementsHolder;
 
         public PreparationPage()
         {
@@ -59,6 +63,17 @@ namespace WPFClient.Pages
             Message message = new Message();
             message.SetMessage($"Class = {GetType().Name}, method = {MethodBase.GetCurrentMethod().Name}");
             logger.Log(message);
+            component1 = new ReadyButtonComponent(btnCell);
+            component2 = new UndoButtonComponent(btnUnplace, false);
+            elementsHolder = new ElementsHolder();
+            new ButtonPressMediator(component1, component2, elementsHolder);
+            elementsHolder.Add(btnBoat);
+            elementsHolder.Add(btnBattleship);
+            elementsHolder.Add(btnCarrier);
+            elementsHolder.Add(btnSubmarine);
+            elementsHolder.Add(btnCell);
+            elementsHolder.Add(cbLoggingOrder);
+            elementsHolder.Add(horizontalCheckBox);
             cbLoggingOrder.SelectedIndex = 0;
             var result = Task.Run(async() => await OpenPlayerLobbyConnection());
             result.Wait();
@@ -402,15 +417,22 @@ namespace WPFClient.Pages
 
             commandInvoker.SetCommand(readyCommand);
             commandInvoker.DoCommand();
+
+
+            component1.Operation();
+
             lblStatus.Content = "Status: READY!";
             lblStatus.Foreground = Brushes.Green;
-            btnBattleship.IsEnabled = false;
-            btnBoat.IsEnabled = false;
-            btnCarrier.IsEnabled = false;
-            btnSubmarine.IsEnabled = false;
+            //btnBattleship.IsEnabled = false;
+            //btnBoat.IsEnabled = false;
+            //btnCarrier.IsEnabled = false;
+            //btnSubmarine.IsEnabled = false;
             cbLoggingOrder.IsEnabled = false;
             horizontalCheckBox.IsEnabled = false;
-            btnCell.IsEnabled = false;
+            //btnCell.IsEnabled = false;
+
+            
+
         }
 
         private void btnUnplace_Click(object sender, RoutedEventArgs e)
@@ -424,13 +446,16 @@ namespace WPFClient.Pages
             UpdateBoardUI();
             lblStatus.Content = "Status: NOT READY!";
             lblStatus.Foreground = Brushes.Red;
-            btnBattleship.IsEnabled = true;
-            btnBoat.IsEnabled = true;
-            btnCarrier.IsEnabled = true;
-            btnSubmarine.IsEnabled = true;
+
+            component2.Operation();
+
+            //btnBattleship.IsEnabled = true;
+            //btnBoat.IsEnabled = true;
+            //btnCarrier.IsEnabled = true;
+            //btnSubmarine.IsEnabled = true;
             cbLoggingOrder.IsEnabled = true;
             horizontalCheckBox.IsEnabled = true;
-            btnCell.IsEnabled = true;
+            //btnCell.IsEnabled = true;
         }
 
         private void inputButton_Click(object sender, RoutedEventArgs e)
@@ -445,5 +470,6 @@ namespace WPFClient.Pages
 
             handler.Interpret(context);
         }
+
     }
 }

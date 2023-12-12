@@ -142,7 +142,7 @@
                 Place Horizontal
             </CheckBox>
         </Grid>
-        <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="input" Grid.Row="3" Grid.ColumnSpan="1" Width="200" Foreground="Gray" FontWeight="Bold">Command</TextBox>
+        <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="input" Grid.Row="3" Grid.ColumnSpan="1" Width="200" Foreground="Gray" FontWeight="Bold"></TextBox>
         <Button HorizontalAlignment="Center" Click="inputButton_Click" VerticalAlignment="Center" x:Name="inputButton" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="1" Foreground="Gray" FontWeight="Bold">Go</Button>
 
         <Label HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="lblStatus" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Foreground="Red" FontWeight="Bold">Status: Not Ready</Label>
