@@ -10,6 +10,7 @@ namespace WPFClient.Entities.State
     public class GameStateContext
     {
         private GameState _state = null;
+        public GameStateContext() { }
 
         public GameStateContext(GameState state)
         {

@@ -23,6 +23,7 @@ using WPFClient.Entities.Facade;
 using WPFClient.Entities.Bridge;
 using System.Linq;
 using WPFClient.Entities.State;
+using WPFClient.Entities.Interpreter;
 
 namespace WPFClient.Pages
 {
@@ -49,7 +50,7 @@ namespace WPFClient.Pages
         Invoker commandInvoker = new Invoker();
         MediaPlayer mediaPlayer;
         IPlayer mp3Player = new Mp3Player();
-        GameStateContext gameStateContext = new GameStateContext(new GameStartedState());
+        GameStateContext gameStateContext = new GameStateContext();
 
         public PreparationPage()
         {
@@ -75,6 +76,7 @@ namespace WPFClient.Pages
                 {
                     this.Dispatcher.Invoke(() =>
                     {
+                        gameStateContext.TransitionTo(new GameStartedState());
                         gameStateContext.ChangeGamePageRequest(this, board);
                     });
                 });
@@ -429,6 +431,19 @@ namespace WPFClient.Pages
             cbLoggingOrder.IsEnabled = true;
             horizontalCheckBox.IsEnabled = true;
             btnCell.IsEnabled = true;
+        }
+
+        private void inputButton_Click(object sender, RoutedEventArgs e)
+        {
+            PanelContext context = new PanelContext(input.Text);
+            ExpressionHandler handler = new ExpressionHandler();
+            ClearConsoleExpression clearConsoleExpression = new ClearConsoleExpression();
+            PlayerNameExpression playerNameExpression = new PlayerNameExpression();
+
+            handler.Expression1 = clearConsoleExpression;
+            handler.Expression2 = playerNameExpression;
+
+            handler.Interpret(context);
         }
     }
 }

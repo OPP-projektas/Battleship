@@ -95,5 +95,10 @@ namespace WPFClient.Entities.Prototype
             }
         }
 
+        public void ClearLogger()
+        {           
+            messageListBox.Items.Clear();
+        }
+
     }
 }

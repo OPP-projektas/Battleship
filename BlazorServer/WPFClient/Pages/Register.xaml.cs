@@ -15,7 +15,7 @@ namespace WPFClient.Pages
     public partial class Register : Page
     {
         Logger logger = Logger.GetInstance();
-        GameStateContext gameStateContext = new GameStateContext(new LoggedInState());
+        GameStateContext gameStateContext = new GameStateContext();
         public Register()
         {
             InitializeComponent();
@@ -26,6 +26,7 @@ namespace WPFClient.Pages
             Player.Username = username.Text;
             SetTextComponent();
 
+            gameStateContext.TransitionTo(new LoggedInState());
             gameStateContext.ChangeGamePageRequest(this, null);
         }
         private void SetTextComponent()
